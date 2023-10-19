@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block body %}
+    <h1> Following </h1>
+    {% for user in following %}
+        <div>
+            <img src="/uploads/{{user['pic']}}" alt="pic" height="20" width="20">
+            <a href="/users/{{user['username2']}}/">{{user["username2"]}}</a>
+            {% if logname!=user["username2"] %}
+                {% if not user["reln"] %}
+                    <div class="box">
+                        <form action="/following/?target=/users/{{user_slug}}/following/" method="post" enctype="multipart/form-data">
+                            <input type="submit" value="follow"/>
+                            <input type="hidden" name="username" value="{{user['username2']}}"/>
+                            <input type="hidden" name="operation" value="follow"/>
+                        </form>
+                    </div>
+                    Not following
+                {% else %}
+                    <div class="box">
+                        <form action="/following/?target=/users/{{user_slug}}/following/" method="post" enctype="multipart/form-data">
+                            <input type="submit" value="unfollow"/>
+                            <input type="hidden" name="username" value="{{user['username2']}}"/>
+                            <input type="hidden" name="operation" value="unfollow"/>
+                        </form>
+                    </div>
+                    Following
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

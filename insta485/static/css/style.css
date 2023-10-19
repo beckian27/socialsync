@@ -1,0 +1,25 @@
+.right{
+    float:right;
+}
+
+.left{
+    float:left;
+}
+
+img
+{
+    width: 50px;
+    height:50px;
+}
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: crimson;
+
+}
+
+.bolded
+{
+    font-weight: bold;
+    color: rgb(31, 1, 100);
+    font-size: small;
+}

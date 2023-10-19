@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block body %}
+    <h1>
+        {{username}}
+    </h1>
+
+
+    <div>
+        {% if logname!=username %}
+            <div>
+                {% if reln == "no" %}
+                    <div>
+                        <form action="/following/?target=/users/{{username}}/" method="post" enctype="multipart/form-data">
+                            <input type="submit" name="follow" value="follow"/>
+                            <input type="hidden" name="username" value="{{username}}"/>
+                            <input type="hidden" name="operation" value="follow"/>
+                        </form>
+                    </div>
+                    not
+
+                {% else %}
+                    <div>
+                        <form action="/following/?target=/users/{{username}}/" method="post" enctype="multipart/form-data">
+                            <input type="submit" name="unfollow" value="unfollow"/>
+                            <input type="hidden" name="username" value="{{username}}"/>
+                            <input type="hidden" name="operation" value="unfollow"/>
+                        </form>
+                    </div>
+                {% endif %}
+                following
+                </div>
+
+
+        {% else %}
+            <a href="/accounts/edit/"> Edit profile</a>
+            <form action="/accounts/logout/" method="post" enctype="multipart/form-data">
+                <input type="submit" name="logout" value="Logout"/>
+            </form>
+        {% endif %}
+
+        <p>
+            {{numposts}} {% if numposts == 1 %} post {% else %} posts {% endif %}    
+            <a href="/users/{{username}}/followers/">{{numflrs}} {% if numflrs == 1 %} follower {% else %} followers {% endif %}   </a>
+            <a href="/users/{{username}}/following/">{{numflwg}} following</a>
+        </p>
+
+        <p>
+            {{fullname}}
+        </p>
+    </div>
+
+    {% if logname == username %}
+        <div>
+            <form action="/posts/?target=/users/{{username}}/" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" required/>
+                <input type="submit" name="create_post" value="upload new post"/>
+                <input type="hidden" name="operation" value="create"/>
+            </form>
+
+        </div>
+    {% endif %}
+
+    <div>
+        {% for post in posts %}
+            <a href="/posts/{{post['postid']}}/"><img src="/uploads/{{post['filename']}}" alt="pic"></a>
+        {% endfor %}
+    </div>
+
+{% endblock %}

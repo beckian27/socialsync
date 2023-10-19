@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block body %}
+<div>
+    <img src= "/uploads/{{user['filename']}}" alt= "pic" height="20" width="20"> {{user['username']}}
+</div>
+
+<div>
+    <form action="/accounts/?target=/accounts/edit/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*"/>
+        <input type="text" name="fullname" value="{{user['fullname']}}" required/>
+        <input type="text" name="email" value="{{user['email']}}" required/>
+        <input type="submit" name="update" value="submit"/>
+        <input type="hidden" name="operation" value="edit_account"/>
+    </form>
+</div>
+
+<p>
+    <a href= "/accounts/password/"> Change password </a>
+</p>
+
+<p>
+    <a href= "/accounts/delete/"> Delete account </a>
+</p>
+
+{% endblock %}

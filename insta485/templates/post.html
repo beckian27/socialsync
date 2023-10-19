@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block body %}
+    <div>
+        <div>
+            <span class="left">
+                <a href="/users/{{owner}}/"><img src="{{owner_img_url}}" alt="pic" height="20" width="20">   {{owner}} </a> 
+            </span>
+
+            <span class="right">
+                <a href="/posts/{{postid}}/">{{timestamp}} </a>
+            </span>
+
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <div>
+            <img src="{{img_url}}" alt="pic">
+        </div>
+
+        <p>
+            {{likes}} {% if likes == 1 %} like {% else %} likes {% endif %}
+        </p>
+        
+        {% if post["liked_by_user"] == 0 %}
+                <form action="/likes/?target=/posts/{{postid}}/" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="operation" value="like"/>
+                    <input type="hidden" name="postid" value="{{postid}}"/>
+                    <input type="submit" name="like" value="like"/>
+                </form>
+
+            {% else %}
+                <form action="/likes/?target=/posts/{{postid}}/" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="operation" value="unlike"/>
+                    <input type="hidden" name="postid" value="{{postid}}"/>
+                    <input type="submit" name="unlike" value="unlike"/>
+                </form>
+        {% endif %}
+
+        {% for comment in comments %}
+
+            <p>
+                <a href="/users/{{comment['owner']}}/">{{comment['owner']}}</a> {{comment["text"]}}
+            </p>
+            {% if logname == comment['owner'] %}
+            <!-- delete your own comment -->
+            <form action="/comments/?target=/posts/{{postid}}/" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="operation" value="delete"/>
+                <input type="hidden" name="commentid" value="{{ comment['commentid'] }}"/>
+                <input type="submit" name="uncomment" value="delete"/>
+            </form>
+  
+            {% endif %}
+        {% endfor %}
+        <!--comment creation form-->
+        <br>
+        <div>
+            <form action="/comments/?target=/posts/{{postid}}/" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="operation" value="create"/>
+                <input type="hidden" name="postid" value="{{postid}}"/>
+                <input type="text" name="text" required/>
+                <input type="submit" name="comment" value="comment"/>
+            </form>
+        </div>
+    </div>
+
+    {% if logname == owner %}
+    <div>
+        <!-- delete your own post -->
+        <form action="/posts/?target=/users/{{ logname }}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="operation" value="delete"/>
+            <input type="hidden" name="postid" value="{{ postid }}"/>
+            <input type="submit" name="delete" value="delete this post"/>
+        </form>
+    </div>
+    {% endif %}
+{% endblock %}
