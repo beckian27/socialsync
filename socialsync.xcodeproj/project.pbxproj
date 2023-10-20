@@ -22,6 +22,9 @@
 		7A2659242ABFAE7D00317BF6 /* InvitationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2659232ABFAE7D00317BF6 /* InvitationRow.swift */; };
 		7A2659262AC0B31000317BF6 /* InvitationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2659252AC0B31000317BF6 /* InvitationList.swift */; };
 		7A2659282AC0B50400317BF6 /* InvitationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2659272AC0B50400317BF6 /* InvitationDetail.swift */; };
+		7A7F75A92AE3077000A471C3 /* Server in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F75A82AE3077000A471C3 /* Server */; };
+		7AE5196B2ADA087400B3D604 /* MyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5196A2ADA087400B3D604 /* MyEvent.swift */; };
+		7AE5196D2ADA08DD00B3D604 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5196C2ADA08DD00B3D604 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		7A2659232ABFAE7D00317BF6 /* InvitationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationRow.swift; sourceTree = "<group>"; };
 		7A2659252AC0B31000317BF6 /* InvitationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationList.swift; sourceTree = "<group>"; };
 		7A2659272AC0B50400317BF6 /* InvitationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationDetail.swift; sourceTree = "<group>"; };
+		7A7F75A82AE3077000A471C3 /* Server */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Server; sourceTree = "<group>"; };
+		7AE5196A2ADA087400B3D604 /* MyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEvent.swift; sourceTree = "<group>"; };
+		7AE5196C2ADA08DD00B3D604 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,7 @@
 		7A2658DD2ABF70BD00317BF6 = {
 			isa = PBXGroup;
 			children = (
+				7A7F75A82AE3077000A471C3 /* Server */,
 				7A2659182ABFA37B00317BF6 /* resources */,
 				7A2658E82ABF70BD00317BF6 /* socialsync */,
 				7A2658F92ABF70BE00317BF6 /* socialsyncTests */,
@@ -117,6 +124,8 @@
 				7A2659132ABF78F800317BF6 /* CircleImage.swift */,
 				7A2659152ABF7ECE00317BF6 /* MapView.swift */,
 				7A26591D2ABFA5D900317BF6 /* Invitation.swift */,
+				7AE5196A2ADA087400B3D604 /* MyEvent.swift */,
+				7AE5196C2ADA08DD00B3D604 /* LoginView.swift */,
 				7A26591F2ABFAA4D00317BF6 /* ModelData.swift */,
 				7A2659232ABFAE7D00317BF6 /* InvitationRow.swift */,
 				7A2659252AC0B31000317BF6 /* InvitationList.swift */,
@@ -264,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A26591A2ABFA4FB00317BF6 /* josh.json in Resources */,
+				7A7F75A92AE3077000A471C3 /* Server in Resources */,
 				7A2658F12ABF70BE00317BF6 /* Preview Assets.xcassets in Resources */,
 				7A2658EE2ABF70BE00317BF6 /* Assets.xcassets in Resources */,
 			);
@@ -298,6 +308,8 @@
 				7A2659282AC0B50400317BF6 /* InvitationDetail.swift in Sources */,
 				7A2659142ABF78F800317BF6 /* CircleImage.swift in Sources */,
 				7A26591E2ABFA5D900317BF6 /* Invitation.swift in Sources */,
+				7AE5196D2ADA08DD00B3D604 /* LoginView.swift in Sources */,
+				7AE5196B2ADA087400B3D604 /* MyEvent.swift in Sources */,
 				7A2659202ABFAA4D00317BF6 /* ModelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

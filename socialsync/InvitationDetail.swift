@@ -12,12 +12,8 @@ struct InvitationDetail: View {
     
     var body: some View {
         ScrollView {
-            MapView()
-                .ignoresSafeArea(edges: .top)
-                .frame(height: 300)
-            
             CircleImage(image: invitation.image)
-                .offset(y: -130)
+                .offset(y: 0)
                 .padding(.bottom, -130)
             
             VStack (alignment: .leading) {
