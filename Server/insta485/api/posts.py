@@ -20,56 +20,14 @@ def return_api():
 @insta485.app.route('/api/v1/posts/')
 def api_posts():
     """Return list of posts with optional parameters."""
-    logname = http()
     connection = model.get_db()
     cur = connection.execute(
-        "SELECT postid "
-        "FROM posts "
-        "WHERE owner IN ("
-        "SELECT username2 FROM following WHERE username1 = ?)"
-        "OR owner = ? "
-        "ORDER BY postid DESC "
-        "LIMIT 1",
-        (logname, logname)
+        "SELECT fullname "
+        "FROM users "
     )
-    most_rec_postid = cur.fetchall()[0]['postid']
-
-    s_z = flask.request.args.get("size", default=10, type=int)
-    lte = flask.request.args.get("postid_lte",
-                                 default=most_rec_postid, type=int)
-    pge = flask.request.args.get("page", default=0, type=int)
-
-    if pge < 0 or s_z < 0:
-        flask.abort(400)
-
-    cur = connection.execute(
-        "SELECT postid "
-        "FROM posts "
-        "WHERE owner IN ("
-        "SELECT username2 FROM following WHERE username1 = ?) "
-        "OR owner = ? "
-        "AND postid <= ? "
-        "ORDER BY postid DESC "
-        "LIMIT ? "
-        "OFFSET ?",
-        (logname, logname, lte, s_z, pge * s_z)
-    )
-    posts = cur.fetchall()
-
-    for post in posts:
-        post['url'] = f"/api/v1/posts/{post['postid']}/"
-
-    nexturl = helpers.get_next_url(s_z, pge, lte, logname)
-
-    url = flask.request.path
-    print(url, flask.request.full_path)
-    if url != flask.request.full_path[:-1:]:
-        url = flask.request.full_path
-
+    name = cur.fetchall()[0]['fullname']
     context = {
-        "next": nexturl,
-        "results": posts,
-        "url": url
+        "name": name
     }
     return flask.jsonify(**context)
 
