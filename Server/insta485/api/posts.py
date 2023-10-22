@@ -20,11 +20,16 @@ def return_api():
 @insta485.app.route('/api/v1/posts/')
 def api_posts():
     """Return list of posts with optional parameters."""
+    console.log('blobfish')
     connection = model.get_db()
+    console.log('blobfish')
+
     cur = connection.execute(
         "SELECT username, fullname, filename "
         "FROM users "
     )
+    console.log('blobfish')
+
     names = {"hi": 'hi'}
     return flask.jsonify(**names)
 
