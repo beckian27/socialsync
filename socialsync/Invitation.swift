@@ -9,15 +9,13 @@ import Foundation
 import SwiftUI
 
 struct Invitation: Codable, Hashable {
-    let username: String
-//    var start: Date
-//    var end: Date
-    let fullname: String
-    
-    let filename: String
-
+    let event_name: String
+    let avail_time: [Date]
+    let host_name: String //whoever sent out the invitation
+    let group_id: Int //unique value
+    let image_name: String
     var image: Image {
-        Image(filename)
+        Image(image_name)
     }
 }
 

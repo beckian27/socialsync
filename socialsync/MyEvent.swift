@@ -9,16 +9,16 @@ import Foundation
 import SwiftUI
 
 struct MyEvent: Codable, Hashable {
+    let event_name: String
+    let start: Date
+    let end: Date
+    let host_name: String //whoever sent out the invitation
+    let group_id: Int //unique value
+    let image_name: String
     let confirmed: Bool
-    let username: String
-//    var start: Date
-//    var end: Date
-    let fullname: String
-    
-    let filename: String
-
+    let voting_required: Bool
     var image: Image {
-        Image(filename)
+        Image(image_name)
     }
 }
 
