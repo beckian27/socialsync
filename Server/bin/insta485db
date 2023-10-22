@@ -26,6 +26,7 @@ case $1 in
     echo "FIXME implement me"
     # ./bin/insta485db create
     mkdir -p var/uploads
+    echo "wtf"
     sqlite3 var/insta485.sqlite3 < sql/schema.sql
     sqlite3 var/insta485.sqlite3 < sql/data.sql
     cp sql/uploads/* var/uploads/
