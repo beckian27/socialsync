@@ -22,10 +22,10 @@ def api_posts():
     """Return list of posts with optional parameters."""
     connection = model.get_db()
     cur = connection.execute(
-        "SELECT fullname "
+        "SELECT username, fullname, filename "
         "FROM users "
     )
-    name = cur.fetchall()[0]['fullname']
+    names = cur.fetchall()[0]['fullname']
     context = {
         "name": name
     }

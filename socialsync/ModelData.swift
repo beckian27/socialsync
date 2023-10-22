@@ -8,7 +8,8 @@
 import Foundation
 
 var events: [Invitation] = load("josh.json")
-let serverUrl = URL(string:"ec2-18-226-164-135.us-east-2.compute.amazonaws.com")
+var servername = "http://ec2-3-147-60-46.us-east-2.compute.amazonaws.com/api/v1/"
+
 
 func load<T: Decodable>(_ filename: String) -> T {	
     let data: Data

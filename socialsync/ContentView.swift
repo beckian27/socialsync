@@ -21,6 +21,20 @@ struct ContentView: View {
                     Label("My Events", systemImage: "tray.and.arrow.down.fill")
                 }
         }
+        .task{
+            do {
+                    events = try await performAPICall()
+                } catch {
+                    return
+                }
+        }
+    }
+    
+    func performAPICall() async throws -> [Invitation] {
+        let url = URL(string: servername)!
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let wrapper = try JSONDecoder().decode([Invitation].self, from: data)
+            return wrapper
     }
 }
 

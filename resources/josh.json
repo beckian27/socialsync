@@ -1,17 +1,17 @@
 [
     {
-        "name": "Josh",
-        "group": "the boys",
-        "imageName": "josh"
+        "fullname": "Josh",
+        "username": "the boys",
+        "filename": "josh"
     },
     {
-        "name": "Farrah",
-        "group": "socialsync",
-        "imageName": "farrah"
+        "fullname": "Farrah",
+        "username": "socialsync",
+        "filename": "farrah"
     },
     {
-        "name": "Michaela",
-        "group": "urmom",
-        "imageName": "michaela"
+        "fullname": "Michaela",
+        "username": "urmom",
+        "filename": "michaela"
     }
 ]

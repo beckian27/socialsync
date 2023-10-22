@@ -10,15 +10,15 @@ import SwiftUI
 
 struct MyEvent: Codable, Hashable {
     let confirmed: Bool
-    let name: String
+    let username: String
 //    var start: Date
 //    var end: Date
-    let group: String
+    let fullname: String
     
-    let imageName: String
+    let filename: String
 
     var image: Image {
-        Image(imageName)
+        Image(filename)
     }
 }
 
