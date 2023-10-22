@@ -32,3 +32,7 @@ VALUES
     ('michjc', 'awdeorio'),
     ('michjc', 'jag'),
     ('jag', 'michjc');
+
+INSERT INTO events(event_name, host_name, group_id, image_name) VALUES
+    ('moms house', 'awdeorio', 1, 'michaela'),
+    ('allens house', 'ur mom', 2, 'josh');

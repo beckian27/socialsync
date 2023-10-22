@@ -17,18 +17,33 @@ def return_api():
     return flask.jsonify(**context)
 
 
-@insta485.app.route('/api/v1/posts/')
-def api_posts():
+@insta485.app.route('/api/v1/events/<username>/')
+def get_myEvents(username):
     """Return list of posts with optional parameters."""
     connection = model.get_db()
 
     cur = connection.execute(
-        "SELECT username, fullname, filename "
-        "FROM users "
+        "SELECT groupid "
+        "FROM memberships "
+        "WHERE username = ?",
+        (username,)
     )
-
-    names = {'items':cur.fetchall()}
-    return flask.jsonify(**names)
+    
+    groups = cur.fetchall()
+    events = {'items':[]}
+    for group in groups:
+        cur = connection.execute(
+            "SELECT event_name, invite_id, start, end, "
+            "host_name, group_id, image_name, confirmed, voting_required "
+            "FROM events "
+            "WHERE group_id = ?",
+            (group['groupid'],)
+        )
+        results = cur.fetchall()
+        for result in results:
+            events['items'].append(result)
+    
+    return flask.jsonify(**events)
 
 
 @insta485.app.route('/api/v1/posts/<int:postid>/')
