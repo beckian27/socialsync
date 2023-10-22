@@ -23,6 +23,7 @@
 		7A2659262AC0B31000317BF6 /* InvitationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2659252AC0B31000317BF6 /* InvitationList.swift */; };
 		7A2659282AC0B50400317BF6 /* InvitationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2659272AC0B50400317BF6 /* InvitationDetail.swift */; };
 		7A7F75A92AE3077000A471C3 /* Server in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F75A82AE3077000A471C3 /* Server */; };
+		7A8BA3A32AE5B0120042F11A /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA3A22AE5B0120042F11A /* config.json */; };
 		7AE5196B2ADA087400B3D604 /* MyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5196A2ADA087400B3D604 /* MyEvent.swift */; };
 		7AE5196D2ADA08DD00B3D604 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5196C2ADA08DD00B3D604 /* LoginView.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		7A2659252AC0B31000317BF6 /* InvitationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationList.swift; sourceTree = "<group>"; };
 		7A2659272AC0B50400317BF6 /* InvitationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationDetail.swift; sourceTree = "<group>"; };
 		7A7F75A82AE3077000A471C3 /* Server */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Server; sourceTree = "<group>"; };
+		7A8BA3A22AE5B0120042F11A /* config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		7AE5196A2ADA087400B3D604 /* MyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEvent.swift; sourceTree = "<group>"; };
 		7AE5196C2ADA08DD00B3D604 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				7A2659192ABFA4FB00317BF6 /* josh.json */,
+				7A8BA3A22AE5B0120042F11A /* config.json */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			files = (
 				7A26591A2ABFA4FB00317BF6 /* josh.json in Resources */,
 				7A7F75A92AE3077000A471C3 /* Server in Resources */,
+				7A8BA3A32AE5B0120042F11A /* config.json in Resources */,
 				7A2658F12ABF70BE00317BF6 /* Preview Assets.xcassets in Resources */,
 				7A2658EE2ABF70BE00317BF6 /* Assets.xcassets in Resources */,
 			);

@@ -14,6 +14,13 @@ struct Wrapper: Codable {
     let items: [Invitation]
 }
 
+struct Config: Codable {
+    var logged_in: Bool = false
+    var user: String
+    
+}
+
+
 func load<T: Decodable>(_ filename: String) -> T {	
     let data: Data
 
