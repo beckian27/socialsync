@@ -20,7 +20,7 @@ struct InvitationList: View {
                     InvitationRow(invitation: Invitation)
                 }
             }
-            .navigationTitle("invitations")
+            .navigationTitle("Pending Invitations")
         }
     }
 }

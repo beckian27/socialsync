@@ -14,7 +14,7 @@ struct InvitationDetail: View {
         ScrollView {
             CircleImage(image: invitation.image)
                 .offset(y: 0)
-                .padding(.bottom, -130)
+                .padding(.bottom, -5)
             
             VStack (alignment: .leading) {
                 Text("Hello, world!")
@@ -32,10 +32,41 @@ struct InvitationDetail: View {
                 Divider()
                 Text(invitation.username + " says hello")
                 
+                Spacer()
+                Spacer()
+                Spacer()
+                .padding()
+                Button(action: {
+                    print("selecting time")
+                    // jump to a different page
+                }) {
+                    Text("Accept")
+                        .font(.system(size: 14))
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color(red: 88 / 255, green: 224 / 255, blue: 133 / 255))
+                        .cornerRadius(5)
+                        .padding(.horizontal, 20)
+                }
             }
-            
-            .padding()
+            Spacer()
+            Spacer()
+            Button(action: {
+                print("Maybe Next time")
+                // exit current scope and delete the invitation.
+            }) {
+                Text("Reject")
+                    .font(.system(size: 14))
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color(red: 224 / 255, green: 0 / 255, blue: 0 / 255))
+                    .cornerRadius(5)
+                    .padding(.horizontal, 20)
+            }
         }
+        .padding()
         .navigationTitle(invitation.username)
         .navigationBarTitleDisplayMode(.inline)
     }
