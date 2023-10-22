@@ -10,9 +10,9 @@ VALUES
 
 INSERT INTO groups(groupname)
 VALUES
-('theboys')
-('M')
-('luther house')
+('theboys'),
+('M'),
+('luther house');
 
 INSERT INTO memberships(username, groupid)
 VALUES
