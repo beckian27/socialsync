@@ -30,13 +30,13 @@ struct InvitationDetail: View {
                 .foregroundColor(.secondary)
                 
                 Divider()
-                Text(invitation.name + " says hello")
+                Text(invitation.username + " says hello")
                 
             }
             
             .padding()
         }
-        .navigationTitle(invitation.name)
+        .navigationTitle(invitation.username)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

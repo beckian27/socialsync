@@ -11,7 +11,7 @@ struct InvitationList: View {
     var body: some View {
         
         NavigationStack {
-            List(events, id: \.name) {
+            List(events, id: \.username) {
                 Invitation in
                 NavigationLink {
                     InvitationDetail(invitation: Invitation)
