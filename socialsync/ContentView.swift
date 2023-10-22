@@ -1,4 +1,4 @@
-//
+
 //  ContentView.swift
 //  socialsync
 //
@@ -9,26 +9,63 @@ import SwiftUI
 
 struct ContentView: View {
     @State var invites = events
+    @State var num_pending = 1
+    @State var confirm_required = true
+    @State var pending_friends = 99
+    var badgeValue: String? {
+            if confirm_required {
+                return "!"
+            } else {
+                return nil
+
+            }
+        }
     var body: some View {
             
-        TabView{
-            VStack {
+        //TabView{
+//            VStack {
+//                InvitationList(invites: invites)
+//                    .tabItem {
+//                        Label("Invitations", systemImage: "tray.and.arrow.down.fill")
+//                }
+//            }
+//            .task{
+//                do {
+//                        invites = try await performAPICall()
+//                        print(events, "events")
+//                    }
+//                catch {print("aghh")}
+//            }
+//            InvitationRow(invitation: events[0])
+//                .tabItem {
+//                    Label("My Events", systemImage: "tray.and.arrow.down.fill")
+//                    
+//                }
+            TabView {
                 InvitationList(invites: invites)
-                    .tabItem {
-                        Label("Invitations", systemImage: "tray.and.arrow.down.fill")
-                }
-            }
-            .task{
-                do {
-                        invites = try await performAPICall()
-                        print(events, "events")
+                    .badge(num_pending)
+                    .tabItem{
+                        Label("Invitations", systemImage: "envelope.circle.fill")
                     }
-                catch {print("aghh")}
+                    .task{
+                        do {
+                            invites = try await performAPICall()
+                            print(events, "events")
+                        }catch {
+                            print("aghh")
+                        }
+                    }
+                InvitationList(invites: invites)//TBD: add an event list for future events and change this line form invitation list to event list.
+                    .badge(badgeValue)
+                    .tabItem{
+                        Label("My Events", systemImage: "personalhotspot")
+                    }
+                InvitationList(invites: invites) //TBD: create a friend list view
+                    .badge(pending_friends)
+                    .tabItem{
+                        Label("Friends", systemImage: "person.crop.circle.fill")
+                    }
             }
-            InvitationRow(invitation: events[0])
-                .tabItem {
-                    Label("My Events", systemImage: "tray.and.arrow.down.fill")
-                }
         }
         
     }
@@ -48,7 +85,7 @@ struct ContentView: View {
         return []
             
     }
-}
+
 
 
 struct ContentView_Previews: PreviewProvider {
