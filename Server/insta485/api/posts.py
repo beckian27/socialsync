@@ -27,7 +27,7 @@ def api_posts():
         "FROM users "
     )
 
-    names = {'names':cur.fetchall()}
+    names = {'items':cur.fetchall()}
     return flask.jsonify(**names)
 
 

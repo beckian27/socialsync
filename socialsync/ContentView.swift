@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @State var invites = events
     var body: some View {
             
         TabView{
             VStack {
-                InvitationList()
+                InvitationList(invites: invites)
                     .tabItem {
                         Label("Invitations", systemImage: "tray.and.arrow.down.fill")
                 }
             }
             .task{
                 do {
-                        events = try await performAPICall()
-                    } catch {
-                        return
+                        invites = try await performAPICall()
+                        print(events, "events")
                     }
+                catch {print("aghh")}
             }
             InvitationRow(invitation: events[0])
                 .tabItem {
@@ -36,8 +36,17 @@ struct ContentView: View {
     func performAPICall() async throws -> [Invitation] {
         let url = URL(string: servername)!
         let (data, _) = try await URLSession.shared.data(from: url)
-        let wrapper = try JSONDecoder().decode([Invitation].self, from: data)
-            return wrapper
+        print("hello")
+        do {
+            let wrapper = try JSONDecoder().decode(Wrapper.self, from: data)
+            print(wrapper)
+            return wrapper.items
+        }
+        catch {
+            print(data)
+        }
+        return []
+            
     }
 }
 

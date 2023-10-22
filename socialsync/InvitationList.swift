@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct InvitationList: View {
+    var invites: [Invitation]
     var body: some View {
         
         NavigationStack {
-            List(events, id: \.username) {
+            List(invites, id: \.username) {
                 Invitation in
                 NavigationLink {
                     InvitationDetail(invitation: Invitation)
@@ -25,5 +26,5 @@ struct InvitationList: View {
 }
 
 #Preview {
-    InvitationList()
+    InvitationList(invites: events)
 }

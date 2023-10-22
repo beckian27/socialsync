@@ -17,7 +17,7 @@ struct Invitation: Codable, Hashable {
     let filename: String
 
     var image: Image {
-        Image(fullname)
+        Image(filename)
     }
 }
 
