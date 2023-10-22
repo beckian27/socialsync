@@ -1,5 +1,5 @@
 PRAGMA foreign_keys = ON;
-kmnnoon
+
 
 
 CREATE TABLE IF NOT EXISTS invitations(
@@ -24,11 +24,10 @@ CREATE TABLE IF NOT EXISTS events(
 
 CREATE TABLE IF NOT EXISTS users(
   fullname VARCHAR(40) NOT NULL,
-  username VARCHAR(40) NOT NULL,
+  username VARCHAR(40) PRIMARY KEY NOT NULL,
   filename VARCHAR(64) NOT NULL,
   password VARCHAR(256) NOT NULL,
   created DATETIME DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY(username)
 );
 
 CREATE TABLE IF NOT EXISTS groups(
