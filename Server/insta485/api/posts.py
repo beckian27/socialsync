@@ -26,10 +26,7 @@ def api_posts():
         "FROM users "
     )
     names = cur.fetchall()[0]['fullname']
-    context = {
-        "name": name
-    }
-    return flask.jsonify(**context)
+    return flask.jsonify(**names)
 
 
 @insta485.app.route('/api/v1/posts/<int:postid>/')
