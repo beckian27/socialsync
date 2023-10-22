@@ -28,7 +28,9 @@ case $1 in
     mkdir -p var/uploads
     echo "wtf"
     sqlite3 var/insta485.sqlite3 < sql/schema.sql
+    echo "die"
     sqlite3 var/insta485.sqlite3 < sql/data.sql
+    echo "kill me"
     cp sql/uploads/* var/uploads/
     echo "create successful"
     ;;
