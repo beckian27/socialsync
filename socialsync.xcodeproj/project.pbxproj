@@ -69,6 +69,7 @@
 		7A2659272AC0B50400317BF6 /* InvitationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationDetail.swift; sourceTree = "<group>"; };
 		7A7F75A82AE3077000A471C3 /* Server */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Server; sourceTree = "<group>"; };
 		7A8BA3A22AE5B0120042F11A /* config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
+		7A8BA3A42AE622080042F11A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7AE5196A2ADA087400B3D604 /* MyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEvent.swift; sourceTree = "<group>"; };
 		7AE5196C2ADA08DD00B3D604 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +124,7 @@
 		7A2658E82ABF70BD00317BF6 /* socialsync */ = {
 			isa = PBXGroup;
 			children = (
+				7A8BA3A42AE622080042F11A /* Info.plist */,
 				7A2658E92ABF70BD00317BF6 /* socialsyncApp.swift */,
 				7A2658EB2ABF70BD00317BF6 /* ContentView.swift */,
 				7A2658ED2ABF70BE00317BF6 /* Assets.xcassets */,
@@ -486,6 +488,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"socialsync/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = socialsync/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -514,6 +517,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"socialsync/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = socialsync/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
