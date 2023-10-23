@@ -30,7 +30,7 @@ struct InvitationDetail: View {
                 .foregroundColor(.secondary)
                 
                 Divider()
-                Text(invitation.username + " says hello")
+                Text(invitation.host_name + " says hello")
                 
                 Spacer()
                 Spacer()
@@ -67,7 +67,7 @@ struct InvitationDetail: View {
             }
         }
         .padding()
-        .navigationTitle(invitation.username)
+        .navigationTitle(invitation.host_name)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

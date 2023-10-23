@@ -15,7 +15,7 @@ struct InvitationRow: View {
             invitation.image
                 .resizable()
                 .frame(width: 50, height: 50)
-            Text(invitation.username)
+            Text(invitation.host_name)
             
             Spacer()
         }

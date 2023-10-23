@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		627E54982AE71B3D0038DDD1 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E54972AE71B3D0038DDD1 /* EventRow.swift */; };
 		7A2658EA2ABF70BD00317BF6 /* socialsyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2658E92ABF70BD00317BF6 /* socialsyncApp.swift */; };
 		7A2658EC2ABF70BD00317BF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2658EB2ABF70BD00317BF6 /* ContentView.swift */; };
 		7A2658EE2ABF70BE00317BF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2658ED2ABF70BE00317BF6 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		627E54972AE71B3D0038DDD1 /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
 		7A2658E62ABF70BD00317BF6 /* socialsync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socialsync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2658E92ABF70BD00317BF6 /* socialsyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = socialsyncApp.swift; sourceTree = "<group>"; };
 		7A2658EB2ABF70BD00317BF6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				7A2658EB2ABF70BD00317BF6 /* ContentView.swift */,
 				7A2658ED2ABF70BE00317BF6 /* Assets.xcassets */,
 				7A2659132ABF78F800317BF6 /* CircleImage.swift */,
+				627E54972AE71B3D0038DDD1 /* EventRow.swift */,
 				7A2659152ABF7ECE00317BF6 /* MapView.swift */,
 				7A26591D2ABFA5D900317BF6 /* Invitation.swift */,
 				7AE5196A2ADA087400B3D604 /* MyEvent.swift */,
@@ -313,6 +316,7 @@
 				7A2658EA2ABF70BD00317BF6 /* socialsyncApp.swift in Sources */,
 				7A2659282AC0B50400317BF6 /* InvitationDetail.swift in Sources */,
 				7A2659142ABF78F800317BF6 /* CircleImage.swift in Sources */,
+				627E54982AE71B3D0038DDD1 /* EventRow.swift in Sources */,
 				7A26591E2ABFA5D900317BF6 /* Invitation.swift in Sources */,
 				7AE5196D2ADA08DD00B3D604 /* LoginView.swift in Sources */,
 				7AE5196B2ADA087400B3D604 /* MyEvent.swift in Sources */,
