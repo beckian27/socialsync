@@ -19,11 +19,10 @@ def return_api():
 
 @insta485.app.route('/api/v1/events/<username>/')
 def get_myEvents(username):
-    """Return list of posts with optional parameters."""
     connection = model.get_db()
 
     cur = connection.execute(
-        "SELECT groupid "
+        "SELECT group_id "
         "FROM memberships "
         "WHERE username = ?",
         (username,)
@@ -33,11 +32,11 @@ def get_myEvents(username):
     events = {'items':[]}
     for group in groups:
         cur = connection.execute(
-            "SELECT event_name, invite_id, start, end, "
+            "SELECT event_name, event_id, start, end, "
             "host_name, group_id, image_name, confirmed, voting_required "
             "FROM events "
             "WHERE group_id = ?",
-            (group['groupid'],)
+            (group['group_id'],)
         )
         results = cur.fetchall()
         for result in results:
@@ -46,67 +45,35 @@ def get_myEvents(username):
     return flask.jsonify(**events)
 
 
-@insta485.app.route('/api/v1/posts/<int:postid>/')
-def get_post(postid):
-    """Return individual post info via REST API query."""
-    logname = http()
+@insta485.app.route('/api/v1/invitations/<username>/')
+def get_invites(username):
     connection = model.get_db()
     cur = connection.execute(
-        "SELECT commentid, owner, text FROM comments "
-        "WHERE postid = ?",
-        (postid,)
+        "SELECT group_id "
+        "FROM memberships "
+        "WHERE username = ?",
+        (username,)
     )
-    comments = cur.fetchall()
-
-    for comment in comments:
-        comment['lognameOwnsThis'] = (comment['owner'] == logname)
-        comment['ownerShowUrl'] = f'/users/{comment["owner"]}/'
-        comment['url'] = f'/api/v1/comments/{comment["commentid"]}/'
-
-    likes = helpers.get_like_info(logname, postid)
-
-    cur = connection.execute(
-        "SELECT filename, created, owner FROM posts "
-        "WHERE postid = ? "
-        "LIMIT 1",
-        (postid,)
-    )
-    postinfo = cur.fetchall()
-    # sError checking: postid does not exist
-    print(postinfo)
-    if len(postinfo) == 0:
-        raise helpers.InvalidUsage('Not Found', status_code=404)
-
-    owner = postinfo[0]['owner']
-    cur = connection.execute(
-        "SELECT filename FROM users "
-        "WHERE username = ? "
-        "LIMIT 1",
-        (owner,)
-    )
-    ownerinfo = cur.fetchall()
-
-    context = {
-        'comments': comments,
-        'comments_url': f'/api/v1/comments/?postid={postid}',
-        'created': postinfo[0]['created'],
-        'imgUrl': f'/uploads/{postinfo[0]["filename"]}',
-        'likes': likes,
-        'owner': owner,
-        'ownerImgUrl': f'/uploads/{ownerinfo[0]["filename"]}',
-        'ownerShowUrl': f'/users/{owner}/',
-        'postShowUrl': f'/posts/{postid}/',
-        'postid': postid,
-        'url': f'/api/v1/posts/{postid}/'
-    }
-    return flask.jsonify(**context)
+    
+    groups = cur.fetchall()
+    events = {'items':[]}
+    for group in groups:
+        cur = connection.execute(
+            "SELECT event_name, invite_id, avail_times, "
+            "host_name, group_id, image_name "
+            "FROM invites "
+            "WHERE group_id = ?",
+            (group['group_id'],)
+        )
+        results = cur.fetchall()
+        for result in results:
+            events['items'].append(result)
+    
+    return flask.jsonify(**events)
 
 
-@insta485.app.route('/api/v1/likes/', methods=['POST'])
-def create_like():
-    """Like the provided post."""
-    logname = http()
-    postid = flask.request.args.get("postid", type=int)
+@insta485.app.route('/api/v1/groups/<username>/', methods=['POST'])
+def get_groups(username):
     connection = model.get_db()
     cur = connection.execute(
         "SELECT likeid FROM likes "

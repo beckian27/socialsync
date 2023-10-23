@@ -10,11 +10,11 @@ VALUES
 
 INSERT INTO groups(groupname)
 VALUES
-('theboys'),
-('M'),
-('luther house');
+    ('theboys'),
+    ('M'),
+    ('luther house');
 
-INSERT INTO memberships(username, groupid)
+INSERT INTO memberships(username, group_id)
 VALUES
     ('awdeorio', 1),
     ('michjc', 1),
