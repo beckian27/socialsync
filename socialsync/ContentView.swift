@@ -75,7 +75,7 @@ struct ContentView: View {
         let (data, _) = try await URLSession.shared.data(from: url)
         print("hello")
         do {
-            let wrapper = try JSONDecoder().decode(Wrapper.self, from: data)
+            let wrapper = try JSONDecoder().decode(Wrapper<Invitation>.self, from: data)
             print(wrapper)
             return wrapper.items
         }
