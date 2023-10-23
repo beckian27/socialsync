@@ -26,5 +26,5 @@ struct InvitationList: View {
 }
 
 #Preview {
-    InvitationList(invites: events)
+    InvitationList(invites: invitations)
 }
