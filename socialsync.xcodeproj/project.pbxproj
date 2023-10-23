@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		627E54982AE71B3D0038DDD1 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E54972AE71B3D0038DDD1 /* EventRow.swift */; };
+		627E549A2AE725AC0038DDD1 /* Allen.json in Resources */ = {isa = PBXBuildFile; fileRef = 627E54992AE71FD30038DDD1 /* Allen.json */; };
 		7A2658EA2ABF70BD00317BF6 /* socialsyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2658E92ABF70BD00317BF6 /* socialsyncApp.swift */; };
 		7A2658EC2ABF70BD00317BF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2658EB2ABF70BD00317BF6 /* ContentView.swift */; };
 		7A2658EE2ABF70BE00317BF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2658ED2ABF70BE00317BF6 /* Assets.xcassets */; };
@@ -282,6 +283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				627E549A2AE725AC0038DDD1 /* Allen.json in Resources */,
 				7A26591A2ABFA4FB00317BF6 /* josh.json in Resources */,
 				7A7F75A92AE3077000A471C3 /* Server in Resources */,
 				7A8BA3A32AE5B0120042F11A /* config.json in Resources */,

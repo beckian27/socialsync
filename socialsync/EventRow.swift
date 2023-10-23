@@ -27,7 +27,7 @@ struct EventRow: View {
 struct EventRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            EventRow(MyEvents: events[0])
+            EventRow(Events: events[0])
                 .previewLayout(.fixed(width: 300, height: 70))
             EventRow(Events: events[1])
                 .previewLayout(.fixed(width: 300, height: 70))

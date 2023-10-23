@@ -4,25 +4,26 @@
         "time": "10/19/2023;18:00-10/20/2023;10:00",
         "host_name": "Allen",
         "group_id" : 1,
-        "image_name": ""
+        "image_name": "csgo",
+        "confirmed": true,
+        "voting_required": false
     },
     {
-        
+        "event_name": "Bar night",
+        "time": "10/19/2023;18:00-10/20/2023;10:00",
+        "host_name": "Ian",
+        "group_id" : 2,
+        "image_name": "bar",
+        "confirmed": false,
+        "voting_required": false
+    },
+    {
+        "event_name": "Pool Party",
+        "time": "10/19/2023;18:00-10/20/2023;10:00",
+        "host_name": "Alex",
+        "group_id" : 1,
+        "image_name": "pool",
+        "confirmed": false,
+        "voting_required": true
     }
 ]
-
-
-
-
-struct MyEvent: Codable, Hashable {
-    let event_name: String
-    let time: String
-    let host_name: String //whoever sent out the invitation
-    let group_id: Int //unique value
-    let image_name: String
-    let confirmed: Bool
-    let voting_required: Bool
-    var image: Image {
-        Image(image_name)
-    }
-}

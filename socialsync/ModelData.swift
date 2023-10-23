@@ -8,7 +8,7 @@
 import Foundation
 
 var invitations: [Invitation] = load("josh.json")
-var events: [MyEvents] = load("Allen.json")
+var events: [MyEvent] = load("Allen.json")
 var servername = "http://192.168.1.135:8000/api/v1/posts/"
 
 struct Wrapper: Codable {
