@@ -11,8 +11,8 @@ var invitations: [Invitation] = load("josh.json")
 var events: [MyEvent] = load("Allen.json")
 var servername = "http://192.168.1.135:8000/api/v1/posts/"
 
-struct Wrapper: Codable {
-    let items: [Invitation]
+struct Wrapper<T: Codable>: Codable {
+    let items: [T]
 }
 
 struct Config: Codable {
