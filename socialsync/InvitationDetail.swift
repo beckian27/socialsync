@@ -73,5 +73,5 @@ struct InvitationDetail: View {
 }
 
 #Preview {
-    InvitationDetail(invitation: events[1])
+    InvitationDetail(invitation: invitations[1])
 }

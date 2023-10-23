@@ -48,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		627E54972AE71B3D0038DDD1 /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
+		627E54992AE71FD30038DDD1 /* Allen.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Allen.json; sourceTree = "<group>"; };
 		7A2658E62ABF70BD00317BF6 /* socialsync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socialsync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2658E92ABF70BD00317BF6 /* socialsyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = socialsyncApp.swift; sourceTree = "<group>"; };
 		7A2658EB2ABF70BD00317BF6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 			children = (
 				7A2659192ABFA4FB00317BF6 /* josh.json */,
 				7A8BA3A22AE5B0120042F11A /* config.json */,
+				627E54992AE71FD30038DDD1 /* Allen.json */,
 			);
 			path = resources;
 			sourceTree = "<group>";

@@ -23,12 +23,12 @@ struct InvitationRow: View {
     }
 }
 
-struct EventRow_Previews: PreviewProvider {
+struct InvitationRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            InvitationRow(invitation: events[0])
+            InvitationRow(invitation: invitations[0])
                 .previewLayout(.fixed(width: 300, height: 70))
-            InvitationRow(invitation: events[1])
+            InvitationRow(invitation: invitations[1])
                 .previewLayout(.fixed(width: 300, height: 70))
         }
     }
