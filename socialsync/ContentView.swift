@@ -55,7 +55,7 @@ struct ContentView: View {
                             print("aghh")
                         }
                     }
-                InvitationList(invites: invites)//TBD: add an event list for future events and change this line form invitation list to event list.
+                EventList(events: events)//TBD: add an event list for future events and change this line form invitation list to event list.
                     .badge(badgeValue)
                     .tabItem{
                         Label("My Events", systemImage: "personalhotspot")

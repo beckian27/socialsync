@@ -2,7 +2,7 @@
 //  EventList.swift
 //  socialsync
 //
-//  Created by Yuansong Wang on 10/22/23.
+//  Created by Yuansong Wang on 10/23/23.
 //
 
 import SwiftUI
@@ -12,19 +12,19 @@ struct EventList: View {
     var body: some View {
         
         NavigationStack {
-            List(events, id: \.username) {
-                event in
+            List(events, id: \.group_id) {
+                Event in
                 NavigationLink {
-                    //EventDetail(Event: event) //TBD EventDetail
+                    EventDetail(events: Event)
                 } label:  {
-                    //EventRow(Event: event) //TBD EventRow
+                    EventRow(Events: Event)
                 }
             }
-            .navigationTitle("My Events")
+            .navigationTitle("Future Events")
         }
     }
 }
 
 #Preview {
-    InvitationList(invites: events)
+    EventList(events: events)
 }
