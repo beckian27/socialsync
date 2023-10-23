@@ -10,8 +10,8 @@ import SwiftUI
 
 struct MyEvent: Codable, Hashable {
     let event_name: String
-    let start: Date
-    let end: Date
+    let start: String
+    let end: String
     let host_name: String //whoever sent out the invitation
     let group_id: Int //unique value
     let image_name: String

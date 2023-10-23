@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var invites = events
-    @State var num_pending = 1
+    @State var num_pending = 3
     @State var confirm_required = true
     @State var pending_friends = 99
     var badgeValue: String? {
