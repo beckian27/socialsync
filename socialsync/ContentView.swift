@@ -12,6 +12,7 @@ struct ContentView: View {
     @State var num_pending = 3
     @State var confirm_required = true
     @State var pending_friends = 99
+    @State var eventz = events
     var badgeValue: String? {
             if confirm_required {
                 return "!"
@@ -54,10 +55,17 @@ struct ContentView: View {
                             print("aghh")
                         }
                     }
-                EventList(events: events)//TBD: add an event list for future events and change this line form invitation list to event list.
+                EventList(events: eventz)//TBD: add an event list for future events and change this line form invitation list to event list.
                     .badge(badgeValue)
                     .tabItem{
                         Label("My Events", systemImage: "personalhotspot")
+                    }
+                    .task{
+                        do {
+                            eventz = try await performAPICall(endpoint: "/events/awdeorio/")
+                        }catch {
+                            print("aghh")
+                        }
                     }
                 InvitationList(invites: invites) //TBD: create a friend list view
                     .badge(pending_friends)

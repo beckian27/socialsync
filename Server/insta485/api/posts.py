@@ -32,7 +32,7 @@ def get_myEvents(username):
     events = {'items':[]}
     for group in groups:
         cur = connection.execute(
-            "SELECT event_name, event_id, start, end, "
+            "SELECT event_name, event_id, time, "
             "host_name, group_id, image_name, confirmed, voting_required "
             "FROM events "
             "WHERE group_id = ?",
@@ -42,7 +42,7 @@ def get_myEvents(username):
         for result in results:
             events['items'].append(result)
     
-    return flask.jsonify(**events)
+    return events
 
 
 @insta485.app.route('/api/v1/invitations/<username>/')
@@ -68,9 +68,7 @@ def get_invites(username):
         results = cur.fetchall()
         for result in results:
             events['items'].append(result)
-            
-        print(events)
-    
+                
     return events
 
 
