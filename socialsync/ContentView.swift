@@ -80,7 +80,7 @@ struct ContentView: View {
             return wrapper.items
         }
         catch {
-            print(data, error)
+            print(data as NSData, error)
         }
         return []
             

@@ -69,7 +69,7 @@ def get_invites(username):
         for result in results:
             events['items'].append(result)
     
-    return flask.jsonify(**events)
+    return events
 
 
 @insta485.app.route('/api/v1/groups/<username>/')
