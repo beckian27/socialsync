@@ -33,7 +33,7 @@ VALUES
     ('michjc', 'jag'),
     ('jag', 'michjc');
 
-INSERT INTO invites(event_name, avail_times, host_name, group_id, image_name) VALUES
+INSERT INTO invites(event_name, avail_time, host_name, group_id, image_name) VALUES
     ('moms house', 'asdf', 'awdeorio', 1, 'michaela'),
     ('allens house', 'asdf', 'michjc', 2, 'josh');
 
