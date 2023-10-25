@@ -59,7 +59,7 @@ def get_invites(username):
     events = {'items':[]}
     for group in groups:
         cur = connection.execute(
-            "SELECT event_name, invite_id, avail_times, "
+            "SELECT event_name, invite_id, avail_time, "
             "host_name, group_id, image_name "
             "FROM invites "
             "WHERE group_id = ?",

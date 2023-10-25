@@ -3,7 +3,7 @@ PRAGMA foreign_keys = ON;
 
 CREATE TABLE IF NOT EXISTS invites(
   event_name VARCHAR(64) NOT NULL,
-  avail_times VARCHAR(128) NOT NULL,
+  avail_time VARCHAR(128) NOT NULL,
   host_name VARCHAR(40) NOT NULL,
   invite_id INTEGER PRIMARY KEY AUTOINCREMENT,
   created DATETIME DEFAULT CURRENT_TIMESTAMP,

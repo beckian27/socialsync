@@ -50,7 +50,7 @@ struct ContentView: View {
                     .task{
                         do {
                             invites = try await performAPICall()
-                            print(invitations, "invitations")
+                            print(invites, "invitations")
                         }catch {
                             print("aghh")
                         }
@@ -80,7 +80,7 @@ struct ContentView: View {
             return wrapper.items
         }
         catch {
-            print(data)
+            print(data, "error")
         }
         return []
             
