@@ -72,59 +72,46 @@ def get_invites(username):
     return flask.jsonify(**events)
 
 
-@insta485.app.route('/api/v1/groups/<username>/', methods=['POST'])
+@insta485.app.route('/api/v1/groups/<username>/')
 def get_groups(username):
     connection = model.get_db()
     cur = connection.execute(
-        "SELECT likeid FROM likes "
-        "WHERE owner = ? "
-        "AND postid = ?",
-        (logname, postid)
+        "SELECT group_id FROM memberships "
+        "WHERE username = ? ",
+        (username,)
     )
-    like = cur.fetchall()
-    if like:
-        context = {
-            'likeid': like[0]['likeid'],
-            'url': f'/api/v1/likes/{like[0]["likeid"]}/'
-        }
-        return flask.jsonify(**context), 200
-    connection.execute(
-        "INSERT INTO likes(owner, postid) "
-        "VALUES (?, ?)",
-        (logname, postid)
-    )
-    cur = connection.execute(
-        "SELECT last_insert_rowid()"
-    )
-    like = cur.fetchall()[0]['last_insert_rowid()']
-    context = {
-        'likeid': like,
-        'url': f'/api/v1/likes/{like}/'
-    }
-    return flask.jsonify(**context), 201
+    
+    groups = {'items': cur.fetchall()}
+    return flask.jsonify(**groups)
 
 
-@insta485.app.route('/api/v1/likes/<int:likeid>/', methods=['DELETE'])
-def delete_like(likeid):
-    """Delete the provided like."""
-    logname = http()
+@insta485.app.route('/api/v1/friends/<username>/')
+def delete_like(username):
     connection = model.get_db()
     cur = connection.execute(
-        "SELECT owner FROM likes "
-        "WHERE likeid = ?",
-        (likeid,)
+        "SELECT username FROM friendships "
+        "WHERE friend1 = ? ",
+        (username,)
     )
-    like = cur.fetchall()
-    if not like:
-        raise helpers.InvalidUsage('Not Found', status_code=404)
-    if like[0]['owner'] != logname:
-        raise helpers.InvalidUsage('Forbidden', status_code=403)
-    connection.execute(
-        "DELETE FROM likes "
-        "WHERE likeid = ?",
-        (likeid,)
+    
+    results = cur.fetchall()
+    friends = []
+    for friend in results:
+        friends.appends(friend['friend1'])
+        
+    connection = model.get_db()
+    cur = connection.execute(
+        "SELECT username FROM friendships "
+        "WHERE friend2 = ? ",
+        (username,)
     )
-    return '', 204
+    
+    results = cur.fetchall()
+    for friend in results:
+        friends.appends(friend['friend2'])
+        
+    friends = {'friends': friends}
+    return flask.jsonify(**friends)
 
 
 @insta485.app.route('/api/v1/comments/', methods=['POST'])
