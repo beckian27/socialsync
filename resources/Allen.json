@@ -1,0 +1,29 @@
+[
+    {
+        "event_name": "Gaming Night",
+        "time": "10/19/2023;18:00-10/20/2023;10:00",
+        "host_name": "Allen",
+        "group_id" : 1,
+        "image_name": "csgo",
+        "confirmed": true,
+        "voting_required": false
+    },
+    {
+        "event_name": "Bar night",
+        "time": "10/19/2023;18:00-10/20/2023;10:00",
+        "host_name": "Ian",
+        "group_id" : 2,
+        "image_name": "bar",
+        "confirmed": false,
+        "voting_required": false
+    },
+    {
+        "event_name": "Pool Party",
+        "time": "10/19/2023;18:00-10/20/2023;10:00",
+        "host_name": "Alex",
+        "group_id" : 3,
+        "image_name": "pool",
+        "confirmed": false,
+        "voting_required": true
+    }
+]
