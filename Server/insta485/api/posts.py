@@ -68,6 +68,8 @@ def get_invites(username):
         results = cur.fetchall()
         for result in results:
             events['items'].append(result)
+            
+        print(events)
     
     return events
 
