@@ -49,8 +49,7 @@ struct ContentView: View {
                     }
                     .task{
                         do {
-                            invites = try await performAPICall()
-                            print(invites, "invitations")
+                            invites = try await performAPICall(endpoint: "/invitations/awdeorio/")
                         }catch {
                             print("aghh")
                         }
@@ -68,22 +67,6 @@ struct ContentView: View {
             }
         }
         
-    }
-    
-    func performAPICall() async throws -> [Invitation] {
-        let url = URL(string: servername)!
-        let (data, _) = try await URLSession.shared.data(from: url)
-        print("hello")
-        do {
-            let wrapper = try JSONDecoder().decode(Wrapper<Invitation>.self, from: data)
-            print(wrapper)
-            return wrapper.items
-        }
-        catch {
-            print(data as NSData, error)
-        }
-        return []
-            
     }
 
 
