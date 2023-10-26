@@ -1,4 +1,6 @@
-[
-    "loggedin": True
-    "user": "awdeorio"
-]
+
+    {
+        "logged_in": true,
+        "username": "awdeorio"
+    }
+
