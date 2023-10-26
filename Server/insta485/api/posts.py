@@ -114,37 +114,20 @@ def delete_like(username):
     return flask.jsonify(**friends)
 
 
-@insta485.app.route('/api/v1/comments/', methods=['POST'])
-def comments_postid():
-    """Post a comment."""
-    logname = http()
-    postid = flask.request.args.get('postid', type=int)
-    text = flask.request.get_json()['text']
+@insta485.app.route('/api/v1/create_user/', methods=['POST'])
+def create_user():
+    # could do an error check if we're feeling fancy
+    username = flask.request.args.get('username')
+    password = flask.request.args.get('password')
+    fullname = flask.request.args.get('fullname')
+    filename = flask.request.args.get('filename')
+
     connection = model.get_db()
     connection.execute(
-        "INSERT INTO comments(owner, postid, text) "
-        "VALUES (?, ?, ?)",
-        (logname, postid, text)
+        "INSERT INTO users(username, password, fullname, filename) "
+        "VALUES (?, ?, ?, ?)",
+        (username, password, fullname, filename)
     )
-    cur = connection.execute(
-        "SELECT last_insert_rowid()"
-    )
-    commentid = cur.fetchall()[0]['last_insert_rowid()']
-    cur = connection.execute(
-        "SELECT owner, commentid, text FROM comments "
-        "WHERE commentid = ?",
-        (commentid,)
-    )
-    comment = cur.fetchall()
-    context = {
-        'commentid': commentid,
-        'lognameOwnsThis': True,
-        'ownerShowUrl': f'/users/{logname}/',
-        'url': f'/api/v1/comments/{commentid}/',
-        'owner': comment[0]['owner'],
-        'text': comment[0]['text']
-    }
-    return flask.jsonify(**context), 201
 
 
 @insta485.app.route('/api/v1/comments/<int:commentid>/', methods=['DELETE'])

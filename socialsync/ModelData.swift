@@ -7,7 +7,7 @@
 
 import Foundation
 
-var invitations: [Invitation] = load("josh.json")
+var invitations: [Invitation] = []//load("josh.json")
 var events: [MyEvent] = load("Allen.json")
 var servername = "http://192.168.1.135:8000/api/v1/"
 var Config: ConfigStruct = load("config.json")
