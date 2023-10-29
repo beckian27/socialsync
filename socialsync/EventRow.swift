@@ -16,7 +16,7 @@ struct EventRow: View {
             Events.image
                 .resizable()
                 .frame(width: 50, height: 50)
-            Text(Events.host_name)
+            Text(Events.event_name + " - " + Events.host_name)
             
             Spacer()
         }

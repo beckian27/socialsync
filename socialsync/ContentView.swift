@@ -47,7 +47,7 @@ struct ContentView: View {
                             print("aghh")
                         }
                     }
-                InvitationList(invites: invites) //TBD: create a friend list view
+                FriendList(friend: friends) //TBD: create a friend list view
                     .badge(pending_friends)
                     .tabItem{
                         Label("Friends", systemImage: "person.crop.circle.fill")

@@ -21,6 +21,13 @@ struct EventList: View {
                 }
             }
             .navigationTitle("Future Events")
+            .navigationBarItems(trailing:
+                Button(action: {
+                    //showingCreateEvent.toggle()
+                }) {
+                    Image(systemName: "plus.circle")
+                }
+            )
         }
     }
 }
