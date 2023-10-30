@@ -41,8 +41,8 @@ struct FriendList: View {
     var body: some View {
         NavigationView {
             List(friends, id: \.self) { friend in
-                NavigationLink(destination: Text("Detail view for \(friend.friends)")) {
-                    Text(friend.friends)
+                NavigationLink(destination: Text("Detail view for \(friend.fullname)")) {
+                    Text(friend.fullname)
                 }
             }
             .navigationBarTitle("Friend List")

@@ -8,6 +8,6 @@
 import SwiftUI
 
 struct MyFriend: Codable, Hashable {
-    let friends: String
+    let fullname: String
 }
 

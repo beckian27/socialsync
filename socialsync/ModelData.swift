@@ -9,7 +9,7 @@ import Foundation
 
 var invitations: [Invitation] = load("josh.json")//[]
 var events: [MyEvent] = load("Allen.json")
-var friends: [MyFriend] = [MyFriend(friends:"Alice"), MyFriend(friends:"Bob"), MyFriend(friends:"Charlie")]//temp test
+var friends: [MyFriend] = [MyFriend(fullname:"Alice"), MyFriend(fullname:"Bob"), MyFriend(fullname:"Charlie")]//temp test
 var servername = "http://192.168.1.135:8000/api/v1/"
 var Config: ConfigStruct = load("config.json")
 //var servername = "http://ec2-13-58-26-236.us-east-2.compute.amazonaws.com/api/v1/"
