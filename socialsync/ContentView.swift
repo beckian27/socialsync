@@ -13,6 +13,8 @@ struct ContentView: View {
     @State var confirm_required = true
     @State var pending_friends = 99
     @State var eventz = events
+    @State var friendlist = friends
+    
     var badgeValue: String? {
             if confirm_required {
                 return "!"
@@ -21,6 +23,7 @@ struct ContentView: View {
 
             }
         }
+    
     var body: some View {
             TabView {
                 InvitationList(invites: invites)
@@ -51,6 +54,13 @@ struct ContentView: View {
                     .badge(pending_friends)
                     .tabItem{
                         Label("Friends", systemImage: "person.crop.circle.fill")
+                    }
+                    .task{
+                        do {
+                            friendlist = try await performAPICall(endpoint: "/friends/awdeorio/")
+                        }catch {
+                            print("aghh")
+                        }
                     }
             }
         }

@@ -139,7 +139,7 @@ def get_friends(username):
         friends.appends(friend['friend2'])
         
     friends = {'friends': friends}
-    return flask.jsonify(**friends)
+    return friends
 
 
 @insta485.app.route('/api/v1/create_user/', methods=['POST'])
