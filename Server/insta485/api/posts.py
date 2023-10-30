@@ -138,7 +138,6 @@ def get_friends(username):
     for friend in results:
         friends.append({'fullname': friend['friend1']})
         
-    friends = {'friends': friends}
     return friends
 
 
