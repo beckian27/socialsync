@@ -114,7 +114,7 @@ def get_group_info(group_id):
 
 
 @insta485.app.route('/api/v1/friends/<username>/')
-def delete_like(username):
+def get_friends(username):
     connection = model.get_db()
     cur = connection.execute(
         "SELECT username FROM friendships "
@@ -158,27 +158,14 @@ def create_user():
     )
 
 
-@insta485.app.route('/api/v1/comments/<int:commentid>/', methods=['DELETE'])
-def comments_commentid(commentid):
-    """Delete the provided comment."""
-    logname = http()
-
+@insta485.app.route('/api/v1/add_friends/<username>/', methods=['POST'])
+def comments_commentid(username):
+    friendname = flask.request.args.get('friendname')
     connection = model.get_db()
     cur = connection.execute(
-        "SELECT owner FROM comments "
-        "WHERE commentid = ?",
-        (commentid,)
-    )
-    comment = cur.fetchall()
-    if not comment:
-        raise helpers.InvalidUsage('Not Found', status_code=404)
-    if comment[0]['owner'] != logname:
-        raise helpers.InvalidUsage('Forbidden', status_code=403)
-
-    connection.execute(
-        "DELETE FROM comments "
-        "WHERE commentid = ?",
-        (commentid,)
+        "INSERT INTO friendships(friend1, friend2) "
+        "VALUES (?, ?)",
+        (username, friendname)
     )
 
     return '', 204
