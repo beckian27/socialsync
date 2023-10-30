@@ -117,26 +117,26 @@ def get_group_info(group_id):
 def get_friends(username):
     connection = model.get_db()
     cur = connection.execute(
-        "SELECT username FROM friendships "
+        "SELECT friend2 FROM friendships "
         "WHERE friend1 = ? ",
         (username,)
     )
     
     results = cur.fetchall()
-    friends = []
+    friends = {'items': []}
     for friend in results:
-        friends.appends(friend['friend1'])
+        friends.append({'fullname': friend['friend1']})
         
     connection = model.get_db()
     cur = connection.execute(
-        "SELECT username FROM friendships "
+        "SELECT friend1 FROM friendships "
         "WHERE friend2 = ? ",
         (username,)
     )
     
     results = cur.fetchall()
     for friend in results:
-        friends.appends(friend['friend2'])
+        friends.append({'fullname': friend['friend2']})
         
     friends = {'friends': friends}
     return friends
