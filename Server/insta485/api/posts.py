@@ -125,7 +125,7 @@ def get_friends(username):
     results = cur.fetchall()
     friends = {'items': []}
     for friend in results:
-        friends.append({'fullname': friend['friend1']})
+        friends.append({'fullname': friend['friend2']})
         
     connection = model.get_db()
     cur = connection.execute(
@@ -136,7 +136,7 @@ def get_friends(username):
     
     results = cur.fetchall()
     for friend in results:
-        friends.append({'fullname': friend['friend2']})
+        friends.append({'fullname': friend['friend1']})
         
     friends = {'friends': friends}
     return friends
