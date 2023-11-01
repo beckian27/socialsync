@@ -33,9 +33,9 @@ VALUES
     ('michjc', 'jag'),
     ('jag', 'michjc');
 
-INSERT INTO invites(event_name, avail_time, host_name, group_id, image_name) VALUES
-    ('moms house', 'asdf', 'awdeorio', 1, 'michaela'),
-    ('allens house', 'asdf', 'michjc', 2, 'josh');
+INSERT INTO invites(event_name, avail_time, host_name, group_id, image_name, group_size) VALUES
+    ('moms house', 'asdf', 'awdeorio', 1, 'michaela', 1),
+    ('allens house', 'asdf', 'michjc', 2, 'josh', 1);
 
 INSERT INTO events(event_name, host_name, group_id, image_name, time) VALUES
     ('moms house', 'awdeorio', 1, 'michaela', '10pm'),

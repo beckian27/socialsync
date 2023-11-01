@@ -220,13 +220,16 @@ def calculate_time(invite_id):
     responses = cur.fetchall()
     
     for response in responses:
-        response['times'] = strToDate(response['times'])
-    
+        response['times'] = strToDates(response['times'])
+        
     
     return
     
-def strToDate(times):
-    times =
+def strToDates(times):
+    result = []
+    times = times.split('|')
+    for time in times:
+        time
 
 @insta485.app.route('/api/v1/create_invite/', methods=['POST'])
 def comments_commentid():
