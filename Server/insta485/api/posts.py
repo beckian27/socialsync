@@ -136,7 +136,7 @@ def get_friends(username):
     
     results = cur.fetchall()
     for friend in results:
-        friends.append({'fullname': friend['friend1']})
+        friends['items'].append({'fullname': friend['friend1']})
         
     return friends
 
@@ -157,8 +157,9 @@ def create_user():
     )
 
 
-@insta485.app.route('/api/v1/add_friends/<username>/', methods=['POST'])
+@insta485.app.route('/api/v1/add_friend/<username>/', methods=['POST'])
 def comments_commentid(username):
+    print(flask.request.args.get('friendname'))
     friendname = flask.request.args.get('friendname')
     connection = model.get_db()
     cur = connection.execute(

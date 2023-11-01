@@ -26,42 +26,53 @@ struct ContentView: View {
     
     var body: some View {
             TabView {
-                InvitationList(invites: invites)
-                    .badge(num_pending)
-                    .tabItem{
-                        Label("Invitations", systemImage: "envelope.circle.fill")
-                    }
-                    .task{
-                        do {
-                            invites = try await performAPICall(endpoint: "/invitations/awdeorio/")
-                        }catch {
-                            print("aghh")
+                NavigationStack{
+                    InvitationList(invites: invites)
+                        
+                        .task{
+                            do {
+                                invites = try await performAPICall(endpoint: "/invitations/awdeorio/")
+                            }catch {
+                                print("aghh")
+                            }
                         }
+                }
+                .badge(num_pending)
+                .tabItem{
+                    Label("Invitations", systemImage: "envelope.circle.fill")
+                }
+                NavigationStack {
+                    EventList(events: eventz)
+                        
+                        .task{
+                            do {
+                                eventz = try await performAPICall(endpoint: "/events/awdeorio/")
+                            }catch {
+                                print("aghh")
+                            }
                     }
-                EventList(events: eventz)//TBD: add an event list for future events and change this line form invitation list to event list.
-                    .badge(badgeValue)
-                    .tabItem{
-                        Label("My Events", systemImage: "personalhotspot")
+                        
+                }
+                .badge(badgeValue)
+                .tabItem{
+                    Label("My Events", systemImage: "personalhotspot")
+                }
+                
+                NavigationStack {
+                    FriendList(friend: friendlist)
+                        
+                        .task{
+                            do {
+                                friendlist = Array(Set(try await performAPICall(endpoint: "/friends/awdeorio/")))
+                            }catch {
+                                print("aghh")
+                            }
                     }
-                    .task{
-                        do {
-                            eventz = try await performAPICall(endpoint: "/events/awdeorio/")
-                        }catch {
-                            print("aghh")
-                        }
-                    }
-                FriendList(friend: friends) //TBD: create a friend list view
-                    .badge(pending_friends)
-                    .tabItem{
-                        Label("Friends", systemImage: "person.crop.circle.fill")
-                    }
-                    .task{
-                        do {
-                            friendlist = try await performAPICall(endpoint: "/friends/awdeorio/")
-                        }catch {
-                            print("aghh")
-                        }
-                    }
+                }
+                .badge(pending_friends)
+                .tabItem{
+                    Label("Friends", systemImage: "person.crop.circle.fill")
+                }
             }
         }
         

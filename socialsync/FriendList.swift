@@ -26,8 +26,9 @@ struct AddFriend: View {
                     isPresented = false
                 },
                 trailing: Button("Add") {
-                    //send out api request for add friend
-                    isPresented = true
+                    apipost(endpoint: "add_friend/", parameters: ["friendname": username])
+                    isPresented = false
+                    
                 }
             )
         }
@@ -39,8 +40,8 @@ struct FriendList: View {
     var friend: [MyFriend]
     @State private var showingAddFriend = false
     var body: some View {
-        NavigationView {
-            List(friends, id: \.self) { friend in
+        NavigationStack {
+            List(friend, id: \.fullname) { friend in
                 NavigationLink(destination: Text("Detail view for \(friend.fullname)")) {
                     Text(friend.fullname)
                 }
@@ -57,6 +58,7 @@ struct FriendList: View {
                         AddFriend(isPresented: $showingAddFriend)
             }
         }
+        
     }
 }
 
