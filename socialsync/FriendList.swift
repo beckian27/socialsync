@@ -67,6 +67,5 @@ struct AddFriend: View {
 }
 
 #Preview {
-    
     FriendList(friend: friends)
 }

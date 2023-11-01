@@ -19,7 +19,7 @@ struct LoginView: View {
                     TextField("username", text: $user)
                     TextField("password", text: $user)
                     Button("Login") {logged_in = true}
-                    Button("Create Account") {print("hi")}
+                    Button("Create Account") {}
                     
                 }
                 

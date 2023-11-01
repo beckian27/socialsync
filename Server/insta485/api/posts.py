@@ -158,8 +158,7 @@ def create_user():
 
 
 @insta485.app.route('/api/v1/add_friend/<username>/', methods=['POST'])
-def comments_commentid(username):
-    print(flask.request.args.get('friendname'))
+def add_friend(username):
     friendname = flask.request.args.get('friendname')
     connection = model.get_db()
     cur = connection.execute(
@@ -168,19 +167,87 @@ def comments_commentid(username):
         (username, friendname)
     )
 
-    return '', 204
 
+@insta485.app.route('/api/v1/join_group/', methods=['POST'])
+def join_group():
+    username = flask.request.args.get('username')
+    group_id = flask.request.args.get('group_id')
 
-# Helper functions
-def http():
-    """Delete the provided comment."""
-    logname = password = None
-    if 'username' in flask.session:
-        logname = flask.session['username']
-    else:
-        if flask.request.authorization:
-            logname = flask.request.authorization.get('username')
-            password = flask.request.authorization.get('password')
-        if helpers.http_auth_failed(logname, password):
-            raise helpers.InvalidUsage('Forbidden', status_code=403)
-    return logname
+    connection = model.get_db()
+    cur = connection.execute(
+        "INSERT INTO memberships(friend1, friend2) "
+        "VALUES (?, ?)",
+        (username, group_id)
+    )
+
+@insta485.app.route('/api/v1/respond/', methods=['POST'])
+def submit_response():
+    username = flask.request.args.get('username')
+    invite_id = flask.request.args.get('invite_id')
+    times = flask.request.args.get('times')
+
+    connection = model.get_db()
+    cur = connection.execute(
+        "INSERT INTO responses(invite_id, username, times) "
+        "VALUES (?, ?, ?)",
+        (invite_id, username, times)
+    )
+    
+    cur = connection.execute(
+        "SELECT group_size FROM invites "
+        "WHERE invite_id = ?",
+        (invite_id,)
+    )
+    group_size = cur.fetchone()['group_size']
+    
+    cur = connection.execute(
+        "SELECT invite_id FROM responses "
+        "WHERE invite_id = ?",
+        (invite_id,)
+    )
+    responses = cur.fetchall()
+    if len(responses) == group_size:
+        calculate_time(invite_id)
+        
+        
+def calculate_time(invite_id):
+    connection = model.get_db()
+    cur = connection.execute(
+        "SELECT username, times FROM responses "
+        "WHERE invite_id = ?",
+        (invite_id,)
+    )
+    responses = cur.fetchall()
+    
+    for response in responses:
+        response['times'] = strToDate(response['times'])
+    
+    
+    return
+    
+def strToDate(times):
+    times =
+
+@insta485.app.route('/api/v1/create_invite/', methods=['POST'])
+def comments_commentid():
+    event_name = flask.request.args.get('event_name')
+    avail_time = flask.request.args.get('avail_time')
+    host_name = flask.request.args.get('host_name')
+    group_id = flask.request.args.get('group_id')
+    image_name = flask.request.args.get('image_name')
+
+    connection = model.get_db()
+    cur = connection.execute(
+        "SELECT FROM memberships "
+        "WHERE group_id = ?",
+        (group_id,)
+    )
+    count = cur.fetchall()
+    group_size = len(count)
+    
+    cur = connection.execute(
+        "INSERT INTO invites(event_name, avail_time, host_name, group_id, group_size, image_name) "
+        "VALUES(?, ?, ?, ?, ?, ?)",
+        (event_name, avail_time, host_name, group_id, group_size, image_name)
+    )
+    

@@ -24,3 +24,18 @@ func decode_invite_string(timestring: String) -> [DateInterval] {
     }
     return times
 }
+
+func encode_response(avail_times: [DateInterval]) -> String {
+    var timestring = ""
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MM-dd-yyyy HH:mm"
+    for time in avail_times {
+        if !timestring.isEmpty {
+            timestring += "|"
+        }
+        let a = formatter.string(from: time.start)
+        let b = formatter.string(from: time.end)
+        timestring += (a + "~" + b)
+    }
+    return timestring
+}

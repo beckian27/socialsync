@@ -5,6 +5,9 @@
 //  Created by Ian Beck on 9/23/23.
 //
 
+//https://github.com/WangLiquan/EWCircleView.git
+//https://github.com/wert1991216/HJCycleView.git
+
 import Foundation
 
 var invitations: [Invitation] = load("josh.json")//[]
