@@ -18,6 +18,9 @@ struct Invitation: Codable, Hashable {
     var image: Image {
         Image(image_name)
     }
+    var times: [DateInterval] {
+        return decode_invite_string(timestring: avail_time)
+    }
 }
 
 

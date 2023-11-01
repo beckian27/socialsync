@@ -27,5 +27,8 @@ struct MyEvent: Codable, Hashable {
     var image: Image {
         Image(image_name)
     }
+    var times: DateInterval {
+        return decode_timestring(timestring: time)
+    }
 }
 

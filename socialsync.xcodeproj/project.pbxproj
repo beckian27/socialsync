@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		626D0A912AEF09490037E9FB /* MyFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626D0A902AEF09490037E9FB /* MyFriend.swift */; };
 		626D0A932AEF0A1C0037E9FB /* FriendList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626D0A922AEF0A1C0037E9FB /* FriendList.swift */; };
 		627E54982AE71B3D0038DDD1 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E54972AE71B3D0038DDD1 /* EventRow.swift */; };
 		627E549A2AE725AC0038DDD1 /* Allen.json in Resources */ = {isa = PBXBuildFile; fileRef = 627E54992AE71FD30038DDD1 /* Allen.json */; };
@@ -16,12 +15,10 @@
 		7A2658EA2ABF70BD00317BF6 /* socialsyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2658E92ABF70BD00317BF6 /* socialsyncApp.swift */; };
 		7A2658EC2ABF70BD00317BF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2658EB2ABF70BD00317BF6 /* ContentView.swift */; };
 		7A2658EE2ABF70BE00317BF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2658ED2ABF70BE00317BF6 /* Assets.xcassets */; };
-		7A2658F12ABF70BE00317BF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2658F02ABF70BE00317BF6 /* Preview Assets.xcassets */; };
 		7A2658FB2ABF70BE00317BF6 /* socialsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2658FA2ABF70BE00317BF6 /* socialsyncTests.swift */; };
 		7A2659052ABF70BE00317BF6 /* socialsyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2659042ABF70BE00317BF6 /* socialsyncUITests.swift */; };
 		7A2659072ABF70BE00317BF6 /* socialsyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2659062ABF70BE00317BF6 /* socialsyncUITestsLaunchTests.swift */; };
 		7A2659142ABF78F800317BF6 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2659132ABF78F800317BF6 /* CircleImage.swift */; };
-		7A2659162ABF7ECE00317BF6 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2659152ABF7ECE00317BF6 /* MapView.swift */; };
 		7A26591A2ABFA4FB00317BF6 /* josh.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A2659192ABFA4FB00317BF6 /* josh.json */; };
 		7A26591E2ABFA5D900317BF6 /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26591D2ABFA5D900317BF6 /* Invitation.swift */; };
 		7A2659202ABFAA4D00317BF6 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26591F2ABFAA4D00317BF6 /* ModelData.swift */; };
@@ -29,7 +26,7 @@
 		7A2659262AC0B31000317BF6 /* InvitationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2659252AC0B31000317BF6 /* InvitationList.swift */; };
 		7A2659282AC0B50400317BF6 /* InvitationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2659272AC0B50400317BF6 /* InvitationDetail.swift */; };
 		7A30B5C22AEA1577003A91B5 /* ConfigStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30B5C12AEA1577003A91B5 /* ConfigStruct.swift */; };
-		7A30B5C42AF03186003A91B5 /* timepair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30B5C32AF03186003A91B5 /* timepair.swift */; };
+		7A30B5C42AF03186003A91B5 /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30B5C32AF03186003A91B5 /* DateModel.swift */; };
 		7A7F75A92AE3077000A471C3 /* Server in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F75A82AE3077000A471C3 /* Server */; };
 		7A8BA3A32AE5B0120042F11A /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA3A22AE5B0120042F11A /* config.json */; };
 		7AE5196B2ADA087400B3D604 /* MyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5196A2ADA087400B3D604 /* MyEvent.swift */; };
@@ -54,7 +51,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		626D0A902AEF09490037E9FB /* MyFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriend.swift; sourceTree = "<group>"; };
 		626D0A922AEF0A1C0037E9FB /* FriendList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendList.swift; sourceTree = "<group>"; };
 		627E54972AE71B3D0038DDD1 /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
 		627E54992AE71FD30038DDD1 /* Allen.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Allen.json; sourceTree = "<group>"; };
@@ -64,14 +60,12 @@
 		7A2658E92ABF70BD00317BF6 /* socialsyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = socialsyncApp.swift; sourceTree = "<group>"; };
 		7A2658EB2ABF70BD00317BF6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7A2658ED2ABF70BE00317BF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7A2658F02ABF70BE00317BF6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7A2658F62ABF70BE00317BF6 /* socialsyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = socialsyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2658FA2ABF70BE00317BF6 /* socialsyncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = socialsyncTests.swift; sourceTree = "<group>"; };
 		7A2659002ABF70BE00317BF6 /* socialsyncUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = socialsyncUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2659042ABF70BE00317BF6 /* socialsyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = socialsyncUITests.swift; sourceTree = "<group>"; };
 		7A2659062ABF70BE00317BF6 /* socialsyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = socialsyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7A2659132ABF78F800317BF6 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
-		7A2659152ABF7ECE00317BF6 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		7A2659192ABFA4FB00317BF6 /* josh.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = josh.json; sourceTree = "<group>"; };
 		7A26591D2ABFA5D900317BF6 /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
 		7A26591F2ABFAA4D00317BF6 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
@@ -79,7 +73,7 @@
 		7A2659252AC0B31000317BF6 /* InvitationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationList.swift; sourceTree = "<group>"; };
 		7A2659272AC0B50400317BF6 /* InvitationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationDetail.swift; sourceTree = "<group>"; };
 		7A30B5C12AEA1577003A91B5 /* ConfigStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStruct.swift; sourceTree = "<group>"; };
-		7A30B5C32AF03186003A91B5 /* timepair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timepair.swift; sourceTree = "<group>"; };
+		7A30B5C32AF03186003A91B5 /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
 		7A7F75A82AE3077000A471C3 /* Server */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Server; sourceTree = "<group>"; };
 		7A8BA3A22AE5B0120042F11A /* config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		7A8BA3A42AE622080042F11A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -137,17 +131,16 @@
 		7A2658E82ABF70BD00317BF6 /* socialsync */ = {
 			isa = PBXGroup;
 			children = (
+				7A9791CC2AF2BEE100039342 /* Preview Content */,
 				7A8BA3A42AE622080042F11A /* Info.plist */,
 				7A2658E92ABF70BD00317BF6 /* socialsyncApp.swift */,
 				7A2658EB2ABF70BD00317BF6 /* ContentView.swift */,
-				626D0A902AEF09490037E9FB /* MyFriend.swift */,
 				626D0A922AEF0A1C0037E9FB /* FriendList.swift */,
 				627E549D2AE727E10038DDD1 /* EventDetail.swift */,
 				7A2658ED2ABF70BE00317BF6 /* Assets.xcassets */,
 				7A2659132ABF78F800317BF6 /* CircleImage.swift */,
 				627E54972AE71B3D0038DDD1 /* EventRow.swift */,
 				627E549B2AE726E60038DDD1 /* EventList.swift */,
-				7A2659152ABF7ECE00317BF6 /* MapView.swift */,
 				7A26591D2ABFA5D900317BF6 /* Invitation.swift */,
 				7AE5196A2ADA087400B3D604 /* MyEvent.swift */,
 				7AE5196C2ADA08DD00B3D604 /* LoginView.swift */,
@@ -155,19 +148,10 @@
 				7A2659232ABFAE7D00317BF6 /* InvitationRow.swift */,
 				7A2659252AC0B31000317BF6 /* InvitationList.swift */,
 				7A2659272AC0B50400317BF6 /* InvitationDetail.swift */,
-				7A2658EF2ABF70BE00317BF6 /* Preview Content */,
 				7A30B5C12AEA1577003A91B5 /* ConfigStruct.swift */,
-				7A30B5C32AF03186003A91B5 /* timepair.swift */,
+				7A30B5C32AF03186003A91B5 /* DateModel.swift */,
 			);
 			path = socialsync;
-			sourceTree = "<group>";
-		};
-		7A2658EF2ABF70BE00317BF6 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				7A2658F02ABF70BE00317BF6 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		7A2658F92ABF70BE00317BF6 /* socialsyncTests */ = {
@@ -195,6 +179,13 @@
 				627E54992AE71FD30038DDD1 /* Allen.json */,
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		7A9791CC2AF2BEE100039342 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,7 +296,6 @@
 				7A26591A2ABFA4FB00317BF6 /* josh.json in Resources */,
 				7A7F75A92AE3077000A471C3 /* Server in Resources */,
 				7A8BA3A32AE5B0120042F11A /* config.json in Resources */,
-				7A2658F12ABF70BE00317BF6 /* Preview Assets.xcassets in Resources */,
 				7A2658EE2ABF70BE00317BF6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,12 +324,10 @@
 				7A2659262AC0B31000317BF6 /* InvitationList.swift in Sources */,
 				7A2658EC2ABF70BD00317BF6 /* ContentView.swift in Sources */,
 				7A2659242ABFAE7D00317BF6 /* InvitationRow.swift in Sources */,
-				7A2659162ABF7ECE00317BF6 /* MapView.swift in Sources */,
-				7A30B5C42AF03186003A91B5 /* timepair.swift in Sources */,
+				7A30B5C42AF03186003A91B5 /* DateModel.swift in Sources */,
 				7A2658EA2ABF70BD00317BF6 /* socialsyncApp.swift in Sources */,
 				7A2659282AC0B50400317BF6 /* InvitationDetail.swift in Sources */,
 				7A2659142ABF78F800317BF6 /* CircleImage.swift in Sources */,
-				626D0A912AEF09490037E9FB /* MyFriend.swift in Sources */,
 				627E549E2AE727E10038DDD1 /* EventDetail.swift in Sources */,
 				627E549C2AE726E60038DDD1 /* EventList.swift in Sources */,
 				627E54982AE71B3D0038DDD1 /* EventRow.swift in Sources */,

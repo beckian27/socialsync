@@ -7,32 +7,8 @@
 
 import SwiftUI
 
-
-struct AddFriend: View {
-    @Binding var isPresented: Bool
-    @State private var username: String = ""
-    
-    var body: some View {
-        NavigationView {
-            Form {
-                Section(header: Text("Enter Friend's Username")) {
-                    TextField("Username: ", text: $username)
-                }
-            }
-            .navigationBarTitle("Add Friend")
-            .navigationBarItems(
-                leading: Button("Cancel") {
-                    //return to previous page
-                    isPresented = false
-                },
-                trailing: Button("Add") {
-                    apipost(endpoint: "add_friend/", parameters: ["friendname": username])
-                    isPresented = false
-                    
-                }
-            )
-        }
-    }
+struct MyFriend: Codable, Hashable {
+    let fullname: String
 }
 
 
@@ -59,6 +35,34 @@ struct FriendList: View {
             }
         }
         
+    }
+}
+
+
+struct AddFriend: View {
+    @Binding var isPresented: Bool
+    @State private var username: String = ""
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                Section(header: Text("Enter Friend's Username")) {
+                    TextField("Username: ", text: $username)
+                }
+            }
+            .navigationBarTitle("Add Friend")
+            .navigationBarItems(
+                leading: Button("Cancel") {
+                    //return to previous page
+                    isPresented = false
+                },
+                trailing: Button("Add") {
+                    apipost(endpoint: "add_friend/", parameters: ["friendname": username])
+                    isPresented = false
+                    
+                }
+            )
+        }
     }
 }
 
