@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InvitationDetail: View {
     var invitation: Invitation
-    
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         ScrollView {
             CircleImage(image: invitation.image)
@@ -54,6 +54,8 @@ struct InvitationDetail: View {
             Spacer()
             Button(action: {
                 print("Maybe Next time")
+                //pass to api to delete the invite
+                dismiss()
                 // exit current scope and delete the invitation.
             }) {
                 Text("Reject")
