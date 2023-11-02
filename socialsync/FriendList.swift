@@ -57,7 +57,7 @@ struct AddFriend: View {
                     isPresented = false
                 },
                 trailing: Button("Add") {
-                    apipost(endpoint: "add_friend/", parameters: ["friendname": username])
+                    apipost(endpoint: "add_friend/" + Config.username + "/", parameters: ["friendname": username])
                     isPresented = false
                     
                 }

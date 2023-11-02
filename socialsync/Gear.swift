@@ -29,12 +29,7 @@ struct Gear: View {
                                 rotation = tanh((newYValue-380)/(newXValue-196.5))
                                 }
                     )
-        
-                
-                
             }
-            
-      
 }
 
 #Preview {

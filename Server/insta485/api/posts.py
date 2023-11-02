@@ -281,11 +281,8 @@ def calculate_time(invite_id):
     
     strtime = besttime[0].strftime('%m/%d/%Y %H:%M') + '~'
     strtime += besttime[1].strftime('%m/%d/%Y %H:%M')
-    
-    
         
-    
-    return
+    return {'items': (strtime, bestusers)}
     
 def strToDates(times):
     result = []

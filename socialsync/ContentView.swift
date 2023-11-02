@@ -31,7 +31,7 @@ struct ContentView: View {
                         
                         .task{
                             do {
-                                invites = try await performAPICall(endpoint: "/invitations/awdeorio/")
+                                invites = try await performAPICall(endpoint: "/invitations/")
                             }catch {
                                 print("aghh")
                             }
@@ -46,7 +46,7 @@ struct ContentView: View {
                         
                         .task{
                             do {
-                                eventz = try await performAPICall(endpoint: "/events/awdeorio/")
+                                eventz = try await performAPICall(endpoint: "/events/")
                             }catch {
                                 print("aghh")
                             }
@@ -63,7 +63,7 @@ struct ContentView: View {
                         
                         .task{
                             do {
-                                friendlist = Array(Set(try await performAPICall(endpoint: "/friends/awdeorio/")))
+                                friendlist = Array(Set(try await performAPICall(endpoint: "/friends/")))
                             }catch {
                                 print("aghh")
                             }

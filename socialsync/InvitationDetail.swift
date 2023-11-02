@@ -28,9 +28,13 @@ struct InvitationDetail: View {
                         .font(.subheadline)
                 }
                 .foregroundColor(.secondary)
+                ForEach(invitation.times, id: \.self) { time in
+                    Text(time.start.formatted() + "-" + time.end.formatted())
+                }
                 
                 Divider()
-                Text(invitation.host_name + " says hello")
+                
+                
                 
                 Spacer()
                 Spacer()

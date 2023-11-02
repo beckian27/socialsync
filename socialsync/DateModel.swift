@@ -7,9 +7,23 @@
 
 import Foundation
 
+struct BestTime {
+    let time_in: String
+    let users_in: String
+    
+    var time: DateInterval {
+        return decode_timestring(timestring: time_in)
+    }
+    
+    var users: [String] {
+        let usrs: [String] = []
+        return usrs
+    }
+}
+
 func decode_timestring(timestring: String) -> DateInterval {
     let formatter = DateFormatter()
-    formatter.dateFormat = "MM-dd-yyyy HH:mm"
+    formatter.dateFormat = "MM/dd/yyyy HH:mm"
     let splitstring = timestring.split(separator: "~")
     let a = formatter.date(from: String(splitstring[0]))
     let b = formatter.date(from: String(splitstring[1]))
@@ -39,3 +53,8 @@ func encode_response(avail_times: [DateInterval]) -> String {
     }
     return timestring
 }
+
+//func display_interval(time: DateInterval) -> String {
+//    let formatter = DateFormatter()
+//    formatter.dateFormat = "MM-dd-yyyy HH:mm"
+//}

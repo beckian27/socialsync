@@ -48,7 +48,7 @@ func load<T: Decodable>(_ filename: String) -> T {
 }
 
 func performAPICall<T: Codable>(endpoint: String) async throws -> [T] {
-    let url = URL(string: servername + endpoint)!
+    let url = URL(string: servername + endpoint + Config.username + "/")!
     let (data, _) = try await URLSession.shared.data(from: url)
     do {
         let wrapper = try JSONDecoder().decode(Wrapper<T>.self, from: data)
@@ -61,7 +61,7 @@ func performAPICall<T: Codable>(endpoint: String) async throws -> [T] {
         
 }
 func apipost(endpoint: String, parameters: [String: String]) {
-    var components = URLComponents(string: servername + endpoint + Config.username + "/")!
+    var components = URLComponents(string: servername + endpoint)!
     var items: [URLQueryItem] = []
     for item in parameters {
         items.append(URLQueryItem(name:item.key, value: item.value))
