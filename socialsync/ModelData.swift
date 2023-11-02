@@ -60,7 +60,7 @@ func performAPICall<T: Codable>(endpoint: String) async throws -> [T] {
     return []
         
 }
-func apipost(endpoint: String, parameters: [String: String]) {
+func apipost<T: Codable>(endpoint: String, parameters: [String: String]) -> [T] {
     var components = URLComponents(string: servername + endpoint)!
     var items: [URLQueryItem] = []
     for item in parameters {
@@ -84,17 +84,26 @@ func apipost(endpoint: String, parameters: [String: String]) {
     
     
     let session = URLSession.shared
+    var result: [T] = []
     let task = session.dataTask(with: request) { (data, response, error) in
 
         if let error = error {
             // Handle HTTP request error
         } else if let data = data {
-            // Handle HTTP request response
+            do {
+                let wrapper = try JSONDecoder().decode(Wrapper<T>.self, from: data)
+                result = wrapper.items
+            }
+            catch {
+                print(data as NSData, error)
+            }
         } else {
             // Handle unexpected error
         }
     }
     task.resume()
+    
+    return result
     
 }
 

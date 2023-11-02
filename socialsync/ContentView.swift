@@ -68,10 +68,15 @@ struct ContentView: View {
                                 print("aghh")
                             }
                     }
+                    
                 }
                 .badge(pending_friends)
                 .tabItem{
                     Label("Friends", systemImage: "person.crop.circle.fill")
+                }
+                .task {
+                    let idealtime: [BestTime] = apipost(endpoint: "test/1/", parameters: [:])
+                    print(idealtime)
                 }
             }
         }

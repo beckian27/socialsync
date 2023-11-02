@@ -26,7 +26,12 @@ struct Gear: View {
                             .onChanged { value in
                                 let newYValue = value.location.y
                                 let newXValue = value.location.x
-                                rotation = tanh((newYValue-380)/(newXValue-196.5))
+                                let temp = atan((newYValue-380)/(newXValue-196.5))
+                                if newYValue > 380{
+                                    rotation = temp + Double.pi
+                                }else{
+                                    rotation = temp;
+                                }
                                 }
                     )
             }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BestTime {
+struct BestTime: Codable {
     let time_in: String
     let users_in: String
     
