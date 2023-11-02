@@ -210,7 +210,7 @@ def submit_response():
     if len(responses) == group_size:
         calculate_time(invite_id)
         
-@insta485.app.route('/api/v1/test/<invite_id>/', methods=['POST'])
+@insta485.app.route('/api/v1/test/<invite_id>/', methods=['GET'])
 def calculate_time(invite_id):
     connection = model.get_db()
     cur = connection.execute(
