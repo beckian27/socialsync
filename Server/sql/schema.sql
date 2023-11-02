@@ -3,13 +3,14 @@ PRAGMA foreign_keys = ON;
 
 CREATE TABLE IF NOT EXISTS invites(
   event_name VARCHAR(64) NOT NULL,
-  avail_time VARCHAR(128) NOT NULL,
+  avail_time VARCHAR(512) NOT NULL,
   host_name VARCHAR(40) NOT NULL,
   invite_id INTEGER PRIMARY KEY AUTOINCREMENT,
   created DATETIME DEFAULT CURRENT_TIMESTAMP,
   group_id INTEGER NOT NULL,
   group_size INTEGER NOT NULL,
   image_name VARCHAR(64) NOT NULL,
+  duration INTEGER NOT NULL,
   FOREIGN KEY(host_name) REFERENCES users(username) ON DELETE CASCADE,
   FOREIGN KEY(group_id) REFERENCES groups(group_id) ON DELETE CASCADE
   );
@@ -61,7 +62,7 @@ CREATE TABLE IF NOT EXISTS friendships(
 CREATE TABLE IF NOT EXISTS responses(
   invite_id INTEGER NOT NULL,
   username VARCHAR(40) NOT NULL,
-  times VARCHAR(128) NOT NULL,
+  times VARCHAR(512) NOT NULL,
   FOREIGN KEY(invite_id) REFERENCES invites(invite_id) ON DELETE CASCADE,
   FOREIGN KEY(username) REFERENCES users(username) ON DELETE CASCADE
 );

@@ -3,40 +3,42 @@ PRAGMA foreign_keys = ON;
 
 INSERT INTO users(username, fullname, filename, password)
 VALUES 
-    ('awdeorio', 'Andrew DeOrio', 'e1a7c5c32973862ee15173b0259e3efdb6a391af.jpg', 'sha512$a45ffdcc71884853a2cba9e6bc55e812$c739cef1aec45c6e345c8463136dc1ae2fe19963106cf748baf87c7102937aa96928aa1db7fe1d8da6bd343428ff3167f4500c8a61095fb771957b4367868fb8'),
-    ('jflinn', 'Jason Flinn', '505083b8b56c97429a728b68f31b0b2a089e5113.jpg', 'sha512$a45ffdcc71884853a2cba9e6bc55e812$c739cef1aec45c6e345c8463136dc1ae2fe19963106cf748baf87c7102937aa96928aa1db7fe1d8da6bd343428ff3167f4500c8a61095fb771957b4367868fb8'),
-    ('michjc', 'Michael Cafarella', '5ecde7677b83304132cb2871516ea50032ff7a4f.jpg', 'sha512$a45ffdcc71884853a2cba9e6bc55e812$c739cef1aec45c6e345c8463136dc1ae2fe19963106cf748baf87c7102937aa96928aa1db7fe1d8da6bd343428ff3167f4500c8a61095fb771957b4367868fb8'),
-    ('jag', 'H.V. Jagadish', '73ab33bd357c3fd42292487b825880958c595655.jpg', 'sha512$a45ffdcc71884853a2cba9e6bc55e812$c739cef1aec45c6e345c8463136dc1ae2fe19963106cf748baf87c7102937aa96928aa1db7fe1d8da6bd343428ff3167f4500c8a61095fb771957b4367868fb8');
+    ('Ian', 'Ian Beck', 'josh', '6'),
+    ('Allen', 'Allen Wang', 'josh', '6'),
+    ('Alex', 'Alex Liu', 'josh', '6'),
+    ('Maki', 'Maki Barnes', 'farrah', '6');
 
 INSERT INTO groups(group_name)
 VALUES
     ('theboys'),
-    ('M'),
+    ('Socialsync'),
     ('luther house');
 
 INSERT INTO memberships(username, group_id)
 VALUES
-    ('awdeorio', 1),
-    ('michjc', 1),
-    ('jflinn', 1),
-    ('awdeorio', 2),
-    ('michjc', 2),
-    ('awdeorio', 3);
+    ('Ian', 1),
+    ('Allen', 1),
+    ('Alex', 1),
+    ('Maki', 1),
+    ('Ian', 2),
+    ('Allen', 3);
 
 INSERT INTO friendships(friend1, friend2)
 VALUES
-    ('awdeorio', 'jflinn'),
-    ('awdeorio', 'michjc'),
-    ('jflinn', 'awdeorio'),
-    ('jflinn', 'michjc'),
-    ('michjc', 'awdeorio'),
-    ('michjc', 'jag'),
-    ('jag', 'michjc');
+    ('Ian', 'Maki'),
+    ('Alex', 'Allen'),
+    ('Ian', 'Alex');
 
-INSERT INTO invites(event_name, avail_time, host_name, group_id, image_name, group_size) VALUES
-    ('moms house', 'asdf', 'awdeorio', 1, 'michaela', 1),
-    ('allens house', 'asdf', 'michjc', 2, 'josh', 1);
+INSERT INTO invites(event_name, avail_time, host_name, group_id, image_name, group_size, duration) VALUES
+    ('Lutherween', '10/27/2023 21:30~10/27/2023 23:30|10/28/2023 21:30~10/28/2023 23:30', 'Ian', 1, 'michaela', 4, 3600),
+    ('allens house', 'asdf', 'Allen', 2, 'josh', 1, 1);
 
 INSERT INTO events(event_name, host_name, group_id, image_name, time) VALUES
-    ('moms house', 'awdeorio', 1, 'michaela', '10pm'),
-    ('allens house', 'ur mom', 2, 'josh', '6:09');
+    ('moms house', 'Allen', 1, 'michaela', '11/5/2023 21:00'),
+    ('allens house', 'Ian', 2, 'josh', '11/6/2023 21:00');
+
+INSERT INTO responses(username, invite_id, times) VALUES
+    ('Ian', 1, '10/27/2023 21:30~10/27/2023 23:30|10/28/2023 21:30~10/28/2023 23:30'),
+    ('Maki', 1, '10/28/2023 21:30~10/28/2023 23:30'),
+    ('Alex', 1, '10/27/2023 21:30~10/27/2023 23:30|10/28/2023 22:30~10/28/2023 23:30'),
+    ('Allen', 1, '10/27/2023 23:00~10/27/2023 23:30')

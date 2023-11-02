@@ -1,6 +1,7 @@
 """REST API for posts."""
 import flask
 import insta485
+import datetime
 from insta485 import model
 from insta485 import helpers
 
@@ -60,7 +61,7 @@ def get_invites(username):
     for group in groups:
         cur = connection.execute(
             "SELECT event_name, invite_id, avail_time, "
-            "host_name, group_id, image_name "
+            "host_name, group_id, image_name, duration "
             "FROM invites "
             "WHERE group_id = ?",
             (group['group_id'],)
@@ -222,6 +223,67 @@ def calculate_time(invite_id):
     for response in responses:
         response['times'] = strToDates(response['times'])
         
+    cur = connection.execute(
+        "SELECT duration, group_id, event_name, avail_time, image_name FROM invites "
+        "WHERE invite_id = ?",
+        (invite_id,)
+    )
+    invite = cur.fetchone()
+    
+    duration = datetime.timedelta(seconds=int(invite['duration']))
+    possible_times = strToDates(invite['avail_time'])
+
+    thirty = datetime.timedelta(minutes=30)
+    zero = datetime.timedelta(seconds=0)
+    
+    maxscore = zero
+    besttime = ''
+    bestusers = ''
+    
+    for time in possible_times:
+        start = time[0]
+        end = start + duration
+        while not time[1] < end:
+            score = zero
+            av_users = ''
+            for response in responses:
+                usermax = zero
+                for time1 in response['times']:
+                    start1 = time1[0]
+                    end1 = start1 + duration
+                    while not time1[1] < end1:
+                        overlap = zero
+                        if start <= start1 and end1 <= end:
+                            overlap = duration
+                        elif start <= start1:
+                            overlap = end - start1
+                        elif end1 <= end:
+                            overlap = end1 - start
+                        else:
+                            overlap = zero
+                        if overlap > usermax:
+                            usermax = overlap
+                        start1 += thirty
+                        end1 += thirty
+                    #endwhile - checking each timeslot
+                #endfor - checking each time window
+                score += usermax
+                av_users += f'{response["username"]},'
+            #endfor - checking each user availabilty against time option
+            if score > maxscore:
+                maxscore = score
+                besttime = (start, end)
+                bestusers = av_users
+            start += thirty
+            end += thirty
+        #endwhile - checking each timeslot
+    #endfor - checking each time window
+    
+    strtime = besttime[0].strftime('%m/%d/%Y %H:%M') + '~'
+    strtime += besttime[1].strftime('%m/%d/%Y %H:%M')
+    
+    
+        
     
     return
     
@@ -229,7 +291,11 @@ def strToDates(times):
     result = []
     times = times.split('|')
     for time in times:
-        time
+        time = time.split('~')
+        a = datetime.strptime(time[0], '%m/%d/%Y %H:%M')
+        b = datetime.strptime(time[1], '%m/%d/%Y %H:%M')
+        result.append((a,b))
+    return result
 
 @insta485.app.route('/api/v1/create_invite/', methods=['POST'])
 def comments_commentid():
@@ -238,6 +304,7 @@ def comments_commentid():
     host_name = flask.request.args.get('host_name')
     group_id = flask.request.args.get('group_id')
     image_name = flask.request.args.get('image_name')
+    duration = flask.request.args.get('duration')
 
     connection = model.get_db()
     cur = connection.execute(
@@ -249,8 +316,8 @@ def comments_commentid():
     group_size = len(count)
     
     cur = connection.execute(
-        "INSERT INTO invites(event_name, avail_time, host_name, group_id, group_size, image_name) "
-        "VALUES(?, ?, ?, ?, ?, ?)",
-        (event_name, avail_time, host_name, group_id, group_size, image_name)
+        "INSERT INTO invites(event_name, avail_time, host_name, group_id, group_size, image_name, duration) "
+        "VALUES(?, ?, ?, ?, ?, ?, ?)",
+        (event_name, avail_time, host_name, group_id, group_size, image_name, duration)
     )
     
