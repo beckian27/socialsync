@@ -9,14 +9,17 @@ import Foundation
 import SwiftUI
 
 struct EventRow: View {
-    var Events: MyEvent
+    var event: MyEvent
 
     var body: some View {
         HStack {
-            Events.image
+            event.image
                 .resizable()
                 .frame(width: 50, height: 50)
-            Text(Events.event_name + " - " + Events.host_name)
+            VStack(alignment: .leading) {
+                Text(event.event_name + " - " + event.host_name)
+                Text(event.times.start.formatted())
+            }
             
             Spacer()
         }
@@ -27,9 +30,9 @@ struct EventRow: View {
 struct EventRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            EventRow(Events: events[0])
+            EventRow(event: events[0])
                 .previewLayout(.fixed(width: 300, height: 70))
-            EventRow(Events: events[1])
+            EventRow(event: events[1])
                 .previewLayout(.fixed(width: 300, height: 70))
         }
     }

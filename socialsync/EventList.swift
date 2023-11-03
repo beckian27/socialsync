@@ -15,9 +15,9 @@ struct EventList: View {
             List(events, id: \.group_id) {
                 Event in
                 NavigationLink {
-                    EventDetail(events: Event)
+                    EventDetail(event: Event)
                 } label:  {
-                    EventRow(Events: Event)
+                    EventRow(event: Event)
                 }
             }
             .navigationTitle("Future Events")

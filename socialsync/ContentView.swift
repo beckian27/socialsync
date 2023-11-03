@@ -74,13 +74,8 @@ struct ContentView: View {
                 .tabItem{
                     Label("Friends", systemImage: "person.crop.circle.fill")
                 }
-                .task {
-                    let idealtime: [BestTime] = apipost(endpoint: "test/1/", parameters: [:])
-                    print(idealtime)
-                }
             }
         }
-        
     }
 
 

@@ -33,7 +33,7 @@ struct InvitationDetail: View {
                 }
                 
                 Divider()
-                
+
                 
                 
                 Spacer()
@@ -41,7 +41,8 @@ struct InvitationDetail: View {
                 Spacer()
                 .padding()
                 Button(action: {
-                    print("selecting time")
+                    let _:[String] = apipost(endpoint: "/test/1/", parameters: [:])
+
                     // jump to a different page
                 }) {
                     Text("Accept")

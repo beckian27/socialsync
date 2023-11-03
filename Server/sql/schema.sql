@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS invites(
   duration INTEGER NOT NULL,
   FOREIGN KEY(host_name) REFERENCES users(username) ON DELETE CASCADE,
   FOREIGN KEY(group_id) REFERENCES groups(group_id) ON DELETE CASCADE
-  );
+);
 
 CREATE TABLE IF NOT EXISTS events(
   event_name VARCHAR(64) NOT NULL,
@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS events(
   group_id INTEGER NOT NULL,
   image_name VARCHAR(100),
   confirmed INTEGER DEFAULT 0,
+  attendees VARCHAR(256) NOT NULL,
   voting_required INTEGER DEFAULT 0,
   FOREIGN KEY(group_id) REFERENCES groups(group_id)
   ON DELETE CASCADE
@@ -37,7 +38,7 @@ CREATE TABLE IF NOT EXISTS users(
 );
 
 CREATE TABLE IF NOT EXISTS groups(
-  group_name VARCHAR(20) NOT NULL,
+  group_name VARCHAR(40) NOT NULL,
   group_id INTEGER PRIMARY KEY AUTOINCREMENT,
   created DATETIME DEFAULT CURRENT_TIMESTAMP
 );

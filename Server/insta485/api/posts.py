@@ -34,7 +34,7 @@ def get_myEvents(username):
     for group in groups:
         cur = connection.execute(
             "SELECT event_name, event_id, time, "
-            "host_name, group_id, image_name, confirmed, voting_required "
+            "host_name, group_id, image_name, confirmed, voting_required, attendees "
             "FROM events "
             "WHERE group_id = ?",
             (group['group_id'],)
@@ -82,10 +82,30 @@ def get_groups(username):
         (username,)
     )
     
-    groups = {'items': cur.fetchall()}
+    groups = cur.fetchall()
     
+    for group in groups:
+        group_id = group['group_id']
+        cur = connection.execute(
+            "SELECT group_name FROM groups "
+            "WHERE group_id = ?",
+            (group_id,)
+        )
+        name = cur.fetchone()['group_name']
+        group['group_name'] = name
+        
+        cur = connection.execute(
+            "SELECT username FROM memberships "
+            "WHERE group_id = ?",
+            (group_id,)
+        )
+        asdf = []
+        members = cur.fetchall()
+        for member in members:
+            asdf.append(member['username'])
+        group['members'] = asdf
     
-    
+    groups = {'items': groups}
     
     return flask.jsonify(**groups)
     
@@ -210,7 +230,7 @@ def submit_response():
     if len(responses) == group_size:
         calculate_time(invite_id)
         
-@insta485.app.route('/api/v1/test/<invite_id>/', methods=['GET'])
+@insta485.app.route('/api/v1/test/<invite_id>/', methods=['POST'])
 def calculate_time(invite_id):
     connection = model.get_db()
     cur = connection.execute(
@@ -224,7 +244,7 @@ def calculate_time(invite_id):
         response['times'] = strToDates(response['times'])
         
     cur = connection.execute(
-        "SELECT duration, group_id, event_name, avail_time, image_name FROM invites "
+        "SELECT duration, group_id, event_name, avail_time, image_name, host_name FROM invites "
         "WHERE invite_id = ?",
         (invite_id,)
     )
@@ -248,6 +268,7 @@ def calculate_time(invite_id):
             av_users = ''
             for response in responses:
                 usermax = zero
+                flag = False
                 for time1 in response['times']:
                     start1 = time1[0]
                     end1 = start1 + duration
@@ -263,12 +284,15 @@ def calculate_time(invite_id):
                             overlap = zero
                         if overlap > usermax:
                             usermax = overlap
+                            flag = True
+                            
                         start1 += thirty
                         end1 += thirty
                     #endwhile - checking each timeslot
                 #endfor - checking each time window
                 score += usermax
-                av_users += f'{response["username"]},'
+                if flag:
+                    av_users += f'{response["username"]},'
             #endfor - checking each user availabilty against time option
             if score > maxscore:
                 maxscore = score
@@ -279,18 +303,34 @@ def calculate_time(invite_id):
         #endwhile - checking each timeslot
     #endfor - checking each time window
     
+    
     strtime = besttime[0].strftime('%m/%d/%Y %H:%M') + '~'
     strtime += besttime[1].strftime('%m/%d/%Y %H:%M')
-        
-    return {'items': (strtime, bestusers)}
+    av_users = av_users.strip(',')
+    event_name = invite['event_name']
+    host_name = invite['host_name']
+    group_id = invite['group_id']
+    image_name = invite['image_name']
+    
+    cur = connection.execute(
+        "INSERT INTO events(event_name, time, host_name, group_id, image_name, attendees) "
+        "VALUES(?, ?, ?, ?, ?, ?)",
+        (event_name, strtime, host_name, group_id, image_name, av_users)
+    )
+    
+    cur = connection.execute(
+        "DELETE FROM invites "
+        "WHERE invite_id = ?",
+        (invite_id)
+    )
     
 def strToDates(times):
     result = []
     times = times.split('|')
     for time in times:
         time = time.split('~')
-        a = datetime.strptime(time[0], '%m/%d/%Y %H:%M')
-        b = datetime.strptime(time[1], '%m/%d/%Y %H:%M')
+        a = datetime.datetime.strptime(time[0], '%m/%d/%Y %H:%M')
+        b = datetime.datetime.strptime(time[1], '%m/%d/%Y %H:%M')
         result.append((a,b))
     return result
 

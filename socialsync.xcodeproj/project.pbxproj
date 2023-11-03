@@ -30,6 +30,7 @@
 		7A7F75A92AE3077000A471C3 /* Server in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F75A82AE3077000A471C3 /* Server */; };
 		7A8BA3A32AE5B0120042F11A /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA3A22AE5B0120042F11A /* config.json */; };
 		7A9791CF2AF4101200039342 /* Gear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9791CE2AF4101200039342 /* Gear.swift */; };
+		7A9791D12AF4516500039342 /* CreateInvite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9791D02AF4516500039342 /* CreateInvite.swift */; };
 		7AE5196B2ADA087400B3D604 /* MyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5196A2ADA087400B3D604 /* MyEvent.swift */; };
 		7AE5196D2ADA08DD00B3D604 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5196C2ADA08DD00B3D604 /* LoginView.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		7A8BA3A22AE5B0120042F11A /* config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		7A8BA3A42AE622080042F11A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7A9791CE2AF4101200039342 /* Gear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gear.swift; sourceTree = "<group>"; };
+		7A9791D02AF4516500039342 /* CreateInvite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInvite.swift; sourceTree = "<group>"; };
 		7AE5196A2ADA087400B3D604 /* MyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEvent.swift; sourceTree = "<group>"; };
 		7AE5196C2ADA08DD00B3D604 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +155,7 @@
 				7A2659272AC0B50400317BF6 /* InvitationDetail.swift */,
 				7A30B5C12AEA1577003A91B5 /* ConfigStruct.swift */,
 				7A30B5C32AF03186003A91B5 /* DateModel.swift */,
+				7A9791D02AF4516500039342 /* CreateInvite.swift */,
 			);
 			path = socialsync;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				7A2659142ABF78F800317BF6 /* CircleImage.swift in Sources */,
 				627E549E2AE727E10038DDD1 /* EventDetail.swift in Sources */,
 				627E549C2AE726E60038DDD1 /* EventList.swift in Sources */,
+				7A9791D12AF4516500039342 /* CreateInvite.swift in Sources */,
 				627E54982AE71B3D0038DDD1 /* EventRow.swift in Sources */,
 				7A30B5C22AEA1577003A91B5 /* ConfigStruct.swift in Sources */,
 				7A26591E2ABFA5D900317BF6 /* Invitation.swift in Sources */,

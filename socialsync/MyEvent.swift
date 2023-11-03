@@ -15,6 +15,7 @@ struct MyEvent: Codable, Hashable {
     let host_name: String //whoever sent out the invitation
     let group_id: Int
     let image_name: String
+    let attendees: String
     let confirmed: Int
     let voting_required: Int
     
@@ -29,6 +30,14 @@ struct MyEvent: Codable, Hashable {
     }
     var times: DateInterval {
         return decode_timestring(timestring: time)
+    }
+    var attendeez: [String] {
+        var arr: [String] = []
+        let split = attendees.split(separator: ",")
+        for user in split {
+            arr.append(String(user))
+        }
+        return arr
     }
 }
 

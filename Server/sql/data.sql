@@ -33,9 +33,9 @@ INSERT INTO invites(event_name, avail_time, host_name, group_id, image_name, gro
     ('Lutherween', '10/27/2023 21:30~10/27/2023 23:30|10/28/2023 21:30~10/28/2023 23:30', 'Ian', 1, 'michaela', 4, 3600),
     ('allens house', 'asdf', 'Allen', 2, 'josh', 1, 1);
 
-INSERT INTO events(event_name, host_name, group_id, image_name, time) VALUES
-    ('moms house', 'Allen', 1, 'michaela', '11/5/2023 21:00'),
-    ('allens house', 'Ian', 2, 'josh', '11/6/2023 21:00');
+INSERT INTO events(event_name, host_name, group_id, image_name, time, attendees) VALUES
+    ('moms house', 'Allen', 1, 'michaela', '11/5/2023 21:00~11/5/2023 22:00', 'me'),
+    ('allens house', 'Ian', 2, 'josh', '11/6/2023 21:00~11/6/2023 23:00', 'joe');
 
 INSERT INTO responses(username, invite_id, times) VALUES
     ('Ian', 1, '10/27/2023 21:30~10/27/2023 23:30|10/28/2023 21:30~10/28/2023 23:30'),
