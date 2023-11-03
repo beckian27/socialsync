@@ -33,6 +33,7 @@ struct Gear: View {
     @State var rectangles : [RectangleView] = createRectangles(num: 5)
     @State var green_bar = 0.0
     @State var last_false: Double = 0.0
+    @Environment(\.presentationMode) var presentationMode
     @State var current: CGFloat? = nil
     @State var rectangleColor = Color.blue
     @State var rotation = 0.0
@@ -98,17 +99,7 @@ struct Gear: View {
                             }
                     )
                 
-                Slider(value: $barv, in: 0...10*Double.pi)
-                    .zIndex(100)
-                    .onChange(of: barv) { oldValue, newValue in
-                        if newValue - loops * 2 * Double.pi > 2 * Double.pi{
-                            loops += 1
-                        }
-                        if newValue - loops * 2 * Double.pi < -2 * Double.pi{
-                            loops -= 1
-                        }
-                        rotation = newValue - loops * Double.pi * 2
-                       }
+               
 //                    .gesture(DragGesture(minimumDistance: 0)
 //                                    .onChanged { _ in
 //                                        isBTriggered = true
@@ -121,7 +112,7 @@ struct Gear: View {
                         .frame(width: 399, height: 20)
                         .foregroundColor(rectangleColor)
                         .cornerRadius(10)
-                        .offset(y:-33)
+                        .offset(y:-1.5)
                         .zIndex(0)
 //                Rectangle()
 //                    .frame(width: 24 * green_bar, height: 20)
@@ -131,15 +122,44 @@ struct Gear: View {
                     
                     
                 ZStack {
+                    
                     ForEach(rectangles, id: \.id) { rectangle in
                         Rectangle()
                             .frame(width: rectangle.width, height: 20)
                             //.cornerRadius(10)
                             .foregroundColor(rectangle.color)
-                            .offset(x: rectangle.offset, y: -61) // Offset the Rectangle up
+                            .offset(x: rectangle.offset, y: -44) // Offset the Rectangle up
                             .zIndex(1)
-                                    }
+                            }
+                    Slider(value: $barv, in: 0...10*Double.pi)
+                        .zIndex(100)
+                        .offset(y: -44)
+                        .onChange(of: barv) { oldValue, newValue in
+                            if newValue - loops * 2 * Double.pi > 2 * Double.pi{
+                                loops += 1
+                            }
+                            if newValue - loops * 2 * Double.pi < -2 * Double.pi{
+                                loops -= 1
+                            }
+                            rotation = newValue - loops * Double.pi * 2
+                           }
+                    Button(action: {
+                        print("Submitted")
+                        //pass to api to delete the invite
+                        presentationMode.wrappedValue.dismiss()
+                        // exit current scope and delete the invitation.
+                    }) {
+                        Text("Submit")
+                            .font(.system(size: 14))
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(Color(red: 88 / 255, green: 224 / 255, blue: 133 / 255))
+                            .cornerRadius(5)
+                            .padding(.horizontal, 20)
                     }
+                    .offset(y:30)
+                }
     
         
     }

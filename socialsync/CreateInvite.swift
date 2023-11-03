@@ -19,12 +19,12 @@ struct invite_form: Identifiable {
     @State var end: String = "18:00"
     var id: Int
     
-        Form{
-            TextField("date", text: $date)
-            TextField("start time", text: $start)
-            TextField("end time", text: $end)
-        }
-        
+//        Form{
+//            TextField("date", text: $date)
+//            TextField("start time", text: $start)
+//            TextField("end time", text: $end)
+//        }
+//        
     
 }
 
@@ -69,11 +69,11 @@ struct CreateInvite: View {
                 
                 
                 Divider()
-                List(inputs) { form in
-                    form
-                }
-                inputs[0]
-                invite_form(id:2)
+//                List(inputs) { form in
+//                    form
+//                }
+//                inputs[0]
+//                invite_form(id:2)
                 
                 
                 Spacer()

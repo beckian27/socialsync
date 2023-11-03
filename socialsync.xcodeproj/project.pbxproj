@@ -110,6 +110,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		62DB675C2AF4723900E0CAB8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		7A2658DD2ABF70BD00317BF6 = {
 			isa = PBXGroup;
 			children = (
@@ -135,8 +142,8 @@
 		7A2658E82ABF70BD00317BF6 /* socialsync */ = {
 			isa = PBXGroup;
 			children = (
+				62DB675C2AF4723900E0CAB8 /* Preview Content */,
 				7A9791CE2AF4101200039342 /* Gear.swift */,
-				7A9791CC2AF2BEE100039342 /* Preview Content */,
 				7A8BA3A42AE622080042F11A /* Info.plist */,
 				7A2658E92ABF70BD00317BF6 /* socialsyncApp.swift */,
 				7A2658EB2ABF70BD00317BF6 /* ContentView.swift */,
@@ -185,13 +192,6 @@
 				627E54992AE71FD30038DDD1 /* Allen.json */,
 			);
 			path = resources;
-			sourceTree = "<group>";
-		};
-		7A9791CC2AF2BEE100039342 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
