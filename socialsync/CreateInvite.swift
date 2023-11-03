@@ -13,35 +13,9 @@ struct group: Codable, Hashable {
     var members: [String]
 }
 
-<<<<<<< HEAD
-//struct invite_form: Identifiable {
-//    @State var date: String = ""
-//    @State var start: String = ""
-//    @State var end: String = "18:00"
-//    var id: Int
-//    
-=======
-struct invite_form: Identifiable {
-    @State var date: String = ""
-    @State var start: String = ""
-    @State var end: String = "18:00"
-    var id: Int
-    
->>>>>>> 251df11fe643ecc380186dc3ac96af2c7aebbb8b
-//        Form{
-//            TextField("date", text: $date)
-//            TextField("start time", text: $start)
-//            TextField("end time", text: $end)
-//        }
-//        
-<<<<<<< HEAD
-//    
-//}
-=======
-    
-}
->>>>>>> 251df11fe643ecc380186dc3ac96af2c7aebbb8b
 
+
+    
 struct GroupList: View {
     @State var myGroups: [group] = []
     
@@ -70,7 +44,11 @@ struct GroupList: View {
     
 struct CreateInvite: View {
     var grp: group
-    @State var inputs: [invite_form] = [invite_form(id:1)]
+    var times: [String] = []
+    @State var starttime: String = "21:00"
+    @State var endtime: String = "23:00"
+    @State var date: String = "10/28/2023"
+    
 
     var body: some View {
         NavigationStack {
