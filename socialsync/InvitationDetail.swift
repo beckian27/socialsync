@@ -9,9 +9,10 @@ import SwiftUI
 
 struct InvitationDetail: View {
     var invitation: Invitation
+    @State var accepting = false
     @Environment(\.dismiss) private var dismiss
     var body: some View {
-        ScrollView {
+        NavigationStack {
             CircleImage(image: invitation.image)
                 .offset(y: 0)
                 .padding(.bottom, -5)
@@ -33,27 +34,30 @@ struct InvitationDetail: View {
                 }
                 
                 Divider()
-
+                    .navigationDestination(isPresented: $accepting){
+                        Gear()
+                    }
                 
                 
                 Spacer()
                 Spacer()
                 Spacer()
                 .padding()
-                Button(action: {
-                    let _:[String] = apipost(endpoint: "/test/1/", parameters: [:])
-
-                    // jump to a different page
-                }) {
-                    Text("Accept")
-                        .font(.system(size: 14))
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color(red: 88 / 255, green: 224 / 255, blue: 133 / 255))
-                        .cornerRadius(5)
-                        .padding(.horizontal, 20)
-                }
+                    Button(action: {
+                        //let _:[String] = apipost(endpoint: "/test/1/", parameters: [:])
+                        accepting.toggle()
+                        // jump to a different page
+                    }) {
+                        Text("Accept")
+                            .font(.system(size: 14))
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(Color(red: 88 / 255, green: 224 / 255, blue: 133 / 255))
+                            .cornerRadius(5)
+                            .padding(.horizontal, 20)
+                    }
+                
             }
             Spacer()
             Spacer()

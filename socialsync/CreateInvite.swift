@@ -13,20 +13,34 @@ struct group: Codable, Hashable {
     var members: [String]
 }
 
+<<<<<<< HEAD
 //struct invite_form: Identifiable {
 //    @State var date: String = ""
 //    @State var start: String = ""
 //    @State var end: String = "18:00"
 //    var id: Int
 //    
+=======
+struct invite_form: Identifiable {
+    @State var date: String = ""
+    @State var start: String = ""
+    @State var end: String = "18:00"
+    var id: Int
+    
+>>>>>>> 251df11fe643ecc380186dc3ac96af2c7aebbb8b
 //        Form{
 //            TextField("date", text: $date)
 //            TextField("start time", text: $start)
 //            TextField("end time", text: $end)
 //        }
 //        
+<<<<<<< HEAD
 //    
 //}
+=======
+    
+}
+>>>>>>> 251df11fe643ecc380186dc3ac96af2c7aebbb8b
 
 struct GroupList: View {
     @State var myGroups: [group] = []
