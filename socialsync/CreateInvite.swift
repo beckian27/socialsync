@@ -13,20 +13,20 @@ struct group: Codable, Hashable {
     var members: [String]
 }
 
-struct invite_form: Identifiable {
-    @State var date: String = ""
-    @State var start: String = ""
-    @State var end: String = "18:00"
-    var id: Int
-    
-        Form{
-            TextField("date", text: $date)
-            TextField("start time", text: $start)
-            TextField("end time", text: $end)
-        }
-        
-    
-}
+//struct invite_form: Identifiable {
+//    @State var date: String = ""
+//    @State var start: String = ""
+//    @State var end: String = "18:00"
+//    var id: Int
+//    
+//        Form{
+//            TextField("date", text: $date)
+//            TextField("start time", text: $start)
+//            TextField("end time", text: $end)
+//        }
+//        
+//    
+//}
 
 struct GroupList: View {
     @State var myGroups: [group] = []
@@ -59,7 +59,8 @@ struct CreateInvite: View {
     @State var inputs: [invite_form] = [invite_form(id:1)]
 
     var body: some View {
-        ScrollView {
+        NavigationStack {
+            Gear()
             
             VStack (alignment: .leading) {
                 Text("Creating an event for:")
@@ -69,11 +70,11 @@ struct CreateInvite: View {
                 
                 
                 Divider()
-                List(inputs) { form in
-                    form
-                }
-                inputs[0]
-                invite_form(id:2)
+//                List(inputs) { form in
+//                    form
+//                }
+//                inputs[0]
+//                invite_form(id:2)
                 
                 
                 Spacer()

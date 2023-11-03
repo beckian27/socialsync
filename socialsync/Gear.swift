@@ -99,7 +99,7 @@ struct Gear: View {
                     )
                 
                 Slider(value: $barv, in: 0...10*Double.pi)
-                    .zIndex(100)
+                    .zIndex(Double(MAXFLOAT))
                     .onChange(of: barv) { oldValue, newValue in
                         if newValue - loops * 2 * Double.pi > 2 * Double.pi{
                             loops += 1
