@@ -30,6 +30,7 @@
 		7A7F75A92AE3077000A471C3 /* Server in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F75A82AE3077000A471C3 /* Server */; };
 		7A8BA3A32AE5B0120042F11A /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BA3A22AE5B0120042F11A /* config.json */; };
 		7A9791D12AF4516500039342 /* CreateInvite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9791D02AF4516500039342 /* CreateInvite.swift */; };
+		7A9791D32AF4AC9E00039342 /* Gear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9791D22AF4AC9E00039342 /* Gear.swift */; };
 		7AE5196B2ADA087400B3D604 /* MyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5196A2ADA087400B3D604 /* MyEvent.swift */; };
 		7AE5196D2ADA08DD00B3D604 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5196C2ADA08DD00B3D604 /* LoginView.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		7A8BA3A22AE5B0120042F11A /* config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		7A8BA3A42AE622080042F11A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7A9791D02AF4516500039342 /* CreateInvite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInvite.swift; sourceTree = "<group>"; };
+		7A9791D22AF4AC9E00039342 /* Gear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gear.swift; path = ../../../Downloads/Gear.swift; sourceTree = "<group>"; };
 		7AE5196A2ADA087400B3D604 /* MyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEvent.swift; sourceTree = "<group>"; };
 		7AE5196C2ADA08DD00B3D604 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +142,7 @@
 		7A2658E82ABF70BD00317BF6 /* socialsync */ = {
 			isa = PBXGroup;
 			children = (
+				7A9791D22AF4AC9E00039342 /* Gear.swift */,
 				62DB675C2AF4723900E0CAB8 /* Preview Content */,
 				7A8BA3A42AE622080042F11A /* Info.plist */,
 				7A2658E92ABF70BD00317BF6 /* socialsyncApp.swift */,
@@ -338,6 +341,7 @@
 				7A30B5C22AEA1577003A91B5 /* ConfigStruct.swift in Sources */,
 				7A26591E2ABFA5D900317BF6 /* Invitation.swift in Sources */,
 				7AE5196D2ADA08DD00B3D604 /* LoginView.swift in Sources */,
+				7A9791D32AF4AC9E00039342 /* Gear.swift in Sources */,
 				626D0A932AEF0A1C0037E9FB /* FriendList.swift in Sources */,
 				7AE5196B2ADA087400B3D604 /* MyEvent.swift in Sources */,
 				7A2659202ABFAA4D00317BF6 /* ModelData.swift in Sources */,
