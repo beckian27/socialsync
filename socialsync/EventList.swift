@@ -9,10 +9,11 @@ import SwiftUI
 
 struct EventList: View {
     var events: [MyEvent]
+    @State var ye = false
     var body: some View {
         
         NavigationStack {
-            List(events, id: \.group_id) {
+            List(events, id: \.event_id) {
                 Event in
                 NavigationLink {
                     EventDetail(event: Event)
@@ -23,11 +24,14 @@ struct EventList: View {
             .navigationTitle("Future Events")
             .navigationBarItems(trailing:
                 Button(action: {
-                    //showingCreateEvent.toggle()
+                    ye.toggle()
                 }) {
                     Image(systemName: "plus.circle")
                 }
             )
+            .navigationDestination(isPresented: $ye) {
+                GroupList()
+            }
         }
     }
 }

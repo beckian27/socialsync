@@ -35,6 +35,10 @@ struct InvitationDetail: View {
                 ForEach(invitation.times, id: \.self) { time in
                     Text(time.start.formatted() + "-" + time.end.formatted(date:.omitted, time:.shortened))
                 }
+                Text("Invited:")
+                ForEach(info[0].members, id:\.self) { member in
+                    Text(member)
+                }
                 
                 
                 
@@ -68,7 +72,7 @@ struct InvitationDetail: View {
             Spacer()
             Button(action: {
                 print("Maybe Next time")
-                //pass to api to delete the invite
+                let _:[String] = apipost(endpoint: "test2/", parameters: [:])
                 dismiss()
                 // exit current scope and delete the invitation.
             }) {
@@ -83,7 +87,7 @@ struct InvitationDetail: View {
             }
             .task {
                 do {
-                    info = try await performAPICall(endpoint: "/groupinfo/" + String(invitation.group_id) + "/")
+                    info = try await performAPICall(endpoint: "/groups/")
                 }
                 catch {}
             }

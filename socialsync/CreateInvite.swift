@@ -18,7 +18,8 @@ struct group: Codable, Hashable {
     
 struct GroupList: View {
     @State var myGroups: [group] = []
-    
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
         NavigationStack {
             Spacer()
@@ -48,20 +49,41 @@ struct CreateInvite: View {
     @State var starttime: String = "21:00"
     @State var endtime: String = "23:00"
     @State var date: String = "10/27/2023"
-    
+    @State var temp1: String = ""
+    @State var temp2: String = ""
+
+    @Environment(\.presentationMode) var presentationMode
+
 
     var body: some View {
         NavigationStack {
-            Gear()
+            
             
             VStack (alignment: .leading) {
-                Text("Creating an event for:")
+                Text("Creating an event for")
                     .font(.title)
-                Text(grp.group_name)
+                Text(grp.group_name + ":")
+                ForEach(grp.members, id:\.self) { member in
+                    Text(member)
+                }
+                
                 
                 
                 
                 Divider()
+                
+                Form {
+                    TextField("Event Name", text: $temp1)
+                    TextField("Length (Hrs)", text: $temp2)
+                    Text("Propose timeslots:")
+                    TextField("Date mm/dd/yyyy", text: $date)
+                    TextField("Start", text: $starttime)
+                    TextField("End", text: $endtime)
+
+                    Button("Another timeslot") {}
+                    Button("Send!") {                            presentationMode.wrappedValue.dismiss()
+}
+                }
 //                List(inputs) { form in
 //                    form
 //                }
@@ -69,14 +91,11 @@ struct CreateInvite: View {
 //                invite_form(id:2)
                 
                 
-                Spacer()
-                Spacer()
-                Spacer()
+                
                 .padding()
                 
             }
-            Spacer()
-            Spacer()
+         
             
         }
         .padding()

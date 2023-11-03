@@ -132,6 +132,35 @@ def get_group_info(group_id):
         info['items']['members'].append(member['username'])
 
     return flask.jsonify(**info)
+    
+@insta485.app.route('/api/v1/test2/', methods=['POST'])
+def get_group_ifo():
+    connection = model.get_db()
+#    cur = connection.execute(
+#        "SELECT group_name FROM groups "
+#        "WHERE group_id = ? ",
+#        (group_id,)
+#    )
+#    
+#    info = {'items': [{'group_name': cur.fetchone()['group_name']}]}
+#    
+#    cur = connection.execute(
+#        "SELECT username FROM memberships "
+#        "WHERE group_id = ?",
+#        (group_id,)
+#    )
+#    info['items']['members'] = []
+#    
+#    members = cur.fetchall()
+#    for member in members:
+#        info['items']['members'].append(member['username'])
+#        
+    cur = connection.execute(
+        "DELETE FROM invites "
+        "WHERE invite_id = 2"
+    )
+    return
+
 
 
 @insta485.app.route('/api/v1/friends/<username>/')
