@@ -11,18 +11,21 @@ struct InvitationDetail: View {
     var invitation: Invitation
     @State var accepting = false
     @Environment(\.dismiss) private var dismiss
+    @State var info: [group] = [group(group_id: 1, group_name: "theboys", members: ["joe"])]
     var body: some View {
+        
         NavigationStack {
+            
             CircleImage(image: invitation.image)
                 .offset(y: 0)
                 .padding(.bottom, -5)
             
             VStack (alignment: .leading) {
-                Text("Hello, world!")
+                Text("You're invited to " + invitation.event_name)
                     .font(.title)
                 
                 HStack {
-                    Text("hello again")
+                    Text("Potential timeslots:")
                         .font(.subheadline)
                     Spacer()
                     Text("goodbye")
@@ -30,8 +33,10 @@ struct InvitationDetail: View {
                 }
                 .foregroundColor(.secondary)
                 ForEach(invitation.times, id: \.self) { time in
-                    Text(time.start.formatted() + "-" + time.end.formatted())
+                    Text(time.start.formatted() + "-" + time.end.formatted(date:.omitted, time:.shortened))
                 }
+                
+                
                 
                 Divider()
                     .navigationDestination(isPresented: $accepting){
@@ -42,21 +47,21 @@ struct InvitationDetail: View {
                 Spacer()
                 Spacer()
                 Spacer()
-                .padding()
-                    Button(action: {
-                        //let _:[String] = apipost(endpoint: "/test/1/", parameters: [:])
-                        accepting.toggle()
-                        // jump to a different page
-                    }) {
-                        Text("Accept")
-                            .font(.system(size: 14))
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color(red: 88 / 255, green: 224 / 255, blue: 133 / 255))
-                            .cornerRadius(5)
-                            .padding(.horizontal, 20)
-                    }
+                    .padding()
+                Button(action: {
+                    //let _:[String] = apipost(endpoint: "/test/1/", parameters: [:])
+                    accepting.toggle()
+                    // jump to a different page
+                }) {
+                    Text("Accept")
+                        .font(.system(size: 14))
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color(red: 88 / 255, green: 224 / 255, blue: 133 / 255))
+                        .cornerRadius(5)
+                        .padding(.horizontal, 20)
+                }
                 
             }
             Spacer()
@@ -76,13 +81,18 @@ struct InvitationDetail: View {
                     .cornerRadius(5)
                     .padding(.horizontal, 20)
             }
+            .task {
+                do {
+                    info = try await performAPICall(endpoint: "/groupinfo/" + String(invitation.group_id) + "/")
+                }
+                catch {}
+            }
+            .padding()
+            .navigationTitle(invitation.host_name)
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .padding()
-        .navigationTitle(invitation.host_name)
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
-
 #Preview {
     InvitationDetail(invitation: invitations[1])
 }

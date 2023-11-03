@@ -47,7 +47,7 @@ struct CreateInvite: View {
     var times: [String] = []
     @State var starttime: String = "21:00"
     @State var endtime: String = "23:00"
-    @State var date: String = "10/28/2023"
+    @State var date: String = "10/27/2023"
     
 
     var body: some View {

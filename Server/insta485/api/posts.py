@@ -118,7 +118,7 @@ def get_group_info(group_id):
         (group_id,)
     )
     
-    info = {'items': {'group_name': cur.fetchone()['group_name']}}
+    info = {'items': [{'group_name': cur.fetchone()['group_name']}]}
     
     cur = connection.execute(
         "SELECT username FROM memberships "
