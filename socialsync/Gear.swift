@@ -8,11 +8,17 @@
 import SwiftUI
 import UIKit
 func change_back(list: [RectangleView], num: Int) -> [RectangleView]{
+    if num < 0 || num > list.count - 1{
+        return list
+    }
     var temp = list
     temp[num].color = Color.red
     return temp
 }
 func change_color(list: [RectangleView], num: Int) -> [RectangleView]{
+    if num < 0 || num > list.count - 1{
+        return list
+    }
     var temp = list
     temp[num].color = Color.green
     return temp
@@ -20,9 +26,9 @@ func change_color(list: [RectangleView], num: Int) -> [RectangleView]{
 func createRectangles(num: Int) -> [RectangleView]{
     var rects: [RectangleView] = []
     for _ in 0...num{
-        let temp1 = 400.0 / Double(num) - 2.0
-        var temp2 = Double(rects.count) * 400.0 / Double(num)
-        temp2 -= 200 - temp1/2
+        let temp1 = 420.0 / Double(num) - 2.0
+        var temp2 = Double(rects.count) * 420.0 / Double(num)
+        temp2 -= 210 - temp1/2
         rects.append(RectangleView(id: rects.count + 1, color: Color.red, width: temp1, offset: temp2))
     }
     return rects;
@@ -109,32 +115,33 @@ struct Gear: View {
 //                                    }
 //                                )
                 Rectangle()
-                        .frame(width: 399, height: 20)
+                        .frame(width: 450, height: 20)
                         .foregroundColor(rectangleColor)
                         .cornerRadius(10)
-                        .offset(y:-1.5)
+                        .offset(y:-3)
                         .zIndex(0)
 //                Rectangle()
 //                    .frame(width: 24 * green_bar, height: 20)
 //                    .foregroundColor(Color.green)
 //                    .cornerRadius(10)
 //                    .offset(x:-190, y:-61)
-                    
-                    
+                Text("9:00      9:30       10:00        10:30         11:00     11:30")
+                    .offset(x:0,y:0)
                 ZStack {
-                    
+                    Text("10/27/2023")
+                        .offset(x:0,y:10)
                     ForEach(rectangles, id: \.id) { rectangle in
                         Rectangle()
                             .frame(width: rectangle.width, height: 20)
                             //.cornerRadius(10)
                             .foregroundColor(rectangle.color)
-                            .offset(x: rectangle.offset, y: -44) // Offset the Rectangle up
+                            .offset(x: rectangle.offset, y: -78.5) // Offset the Rectangle up
                             .zIndex(1)
                             }
                     Slider(value: $barv, in: 0...10*Double.pi)
                         .zIndex(100)
-                        .offset(y: -44)
-                        .onChange(of: barv) { oldValue, newValue in
+                        .offset(y: -78 )
+                        .onChange(of: barv) { newValue in
                             if newValue - loops * 2 * Double.pi > 2 * Double.pi{
                                 loops += 1
                             }
@@ -158,7 +165,7 @@ struct Gear: View {
                             .cornerRadius(5)
                             .padding(.horizontal, 20)
                     }
-                    .offset(y:30)
+                    .offset(y:50)
                 }
     
         
