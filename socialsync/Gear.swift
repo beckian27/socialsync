@@ -26,24 +26,36 @@ func change_color(list: [RectangleView], num: Int) -> [RectangleView]{
 func createRectangles(num: Int) -> [RectangleView]{
     var rects: [RectangleView] = []
     for _ in 0...num{
-        let temp1 = 420.0 / Double(num) - 2.0
+        let temp1 = 400.0 / Double(num) - 2.0
         var temp2 = Double(rects.count) * 420.0 / Double(num)
-        temp2 -= 210 - temp1/2
+        temp2 -= 200 - temp1/2
         rects.append(RectangleView(id: rects.count + 1, color: Color.red, width: temp1, offset: temp2))
     }
     return rects;
 }
-
+func reset_color(rect: [RectangleView], num: Int) -> [RectangleView]{
+    var temp = rect
+    if temp[num].color == Color.green{
+        temp[num].color = Color.red
+    }else{
+        temp[num].color = Color.green
+    }
+    return temp
+}
 struct Gear: View {
     var gears = Image("gear")
+    var pointer = Image("pointer")
+    @State var pp: Double = -190.0
     @State var rectangles : [RectangleView] = createRectangles(num: 5)
     @State var green_bar = 0.0
     @State var last_false: Double = 0.0
     @Environment(\.presentationMode) var presentationMode
     @State var current: CGFloat? = nil
+    @State var current_block = 0
     @State var rectangleColor = Color.blue
     @State var rotation = 0.0
     @State var barv = 0.0
+    @State var gap = 0.0
     @State var loops = 0.0
     @State private var isATriggered = false
     @State private var isBTriggered = false
@@ -53,12 +65,15 @@ struct Gear: View {
 
     
     var body: some View {
-                gears
+        Text("Available")
             
+            .foregroundColor(Color.green)
+                gears
                     .resizable()
                     .frame(width: 250, height: 250)
                     .rotationEffect(Angle(radians: rotation))
-                    
+        
+                    .offset(y:-10)
                     .gesture(
                         DragGesture()
                             
@@ -91,17 +106,43 @@ struct Gear: View {
                                         temp = Double.pi - temp
                                     }
                                 }
-                                if rotation > 340 * 2 * Double.pi / 360 && temp > 0 && temp < 40 * Double.pi / 360{
-                                    rectangles = change_color(list: rectangles, num: Int(loops))
-                                    loops += 1
+                                
+//                                if rotation > 340 * 2 * Double.pi / 360 && temp > 0 && temp < 40 * Double.pi / 360{
+//                                    rectangles = change_color(list: rectangles, num: Int(loops))
+//                                    loops += 1
+//                                }
+//                                if temp > 340 * 2 * Double.pi / 360 && rotation > 0 && rotation < 40 * Double.pi / 360{
+//                                    //rectangles = change_back(list: rectangles, num: Int(loops))
+//                                    loops += 1
+//                                }
+                                temp = abs(temp)
+                                var avil = true
+                                if rotation > temp{
+                                    avil = false
                                 }
-                                if temp > 340 * 2 * Double.pi / 360 && rotation > 0 && rotation < 40 * Double.pi / 360{
-                                    rectangles = change_back(list: rectangles, num: Int(loops))
-                                    loops -= 1
+                                var diff = abs(rotation - temp)
+                                if diff > Double.pi{
+                                    avil = !avil
+                                    diff = abs(diff - 2*Double.pi)
                                 }
-                                rotation = temp
-                                barv = rotation + loops * Double.pi * 2
+                                barv += diff
+                                rotation = abs(temp)
                                 green_bar = barv
+                                pp = -190 + barv/(2*Double.pi)*70
+                                gap = 460.0 - rectangles[0].width * Double(rectangles.count)
+                                print(gap)
+                                gap /= -(Double(rectangles.count) - 1.0)
+                                gap *= Double(current_block)
+                                if (pp + 190.0) > Double((Double(current_block) + 1.0) * rectangles[0].width + gap ) {
+                                    if avil{
+                                        rectangles = change_color(list: rectangles, num: current_block)
+                                    }
+                                    current_block += 1
+                                }
+//                                print(pp)
+                                if pp > 200 {
+                                    pp = 200
+                                }
                             }
                             .onEnded{ value in
                                 isATriggered = false
@@ -117,42 +158,60 @@ struct Gear: View {
 //                                        isBTriggered = false
 //                                    }
 //                                )
-                Rectangle()
-                        .frame(width: 450, height: 20)
-                        .foregroundColor(rectangleColor)
-                        .cornerRadius(10)
-                        .offset(y:-3)
-                        .zIndex(0)
+//                Rectangle()
+//                        .frame(width: 450, height: 20)
+//                        .foregroundColor(rectangleColor)
+//                        .cornerRadius(10)
+//                        .offset(y:-3)
+//                        .zIndex(0)
 //                Rectangle()
 //                    .frame(width: 24 * green_bar, height: 20)
 //                    .foregroundColor(Color.green)
 //                    .cornerRadius(10)
 //                    .offset(x:-190, y:-61)
                 Text("9:00      9:30       10:00        10:30         11:00     11:30")
-                    .offset(x:0,y:0)
+                    .offset(x:0,y:30)
                 ZStack {
                     Text(date)
                         .offset(x:0,y:10)
-                    ForEach(rectangles, id: \.id) { rectangle in
+                    ForEach(0 ..< rectangles.count) {id in
+                        @State var temp = rectangles[id].color
                         Rectangle()
-                            .frame(width: rectangle.width, height: 20)
+                            .frame(width: rectangles[id].width, height: 20)
                             //.cornerRadius(10)
-                            .foregroundColor(rectangle.color)
-                            .offset(x: rectangle.offset, y: -78.5) // Offset the Rectangle up
+                            .offset(x: rectangles[id].offset, y: -40) // Offset the Rectangle up
                             .zIndex(1)
+                            .onTapGesture{
+                                print("yes")
+                                rectangles = reset_color(rect: rectangles, num: id)
+                                temp = Color.green
                             }
+                            .foregroundColor(temp)
+                    }
+                    
+                    pointer
+                        .resizable()
+                                    .scaledToFit() // Maintain the aspect ratio of the image
+                                    .scaleEffect(0.07) // Adjust the scaling factor as needed
+                                    
+                                    .offset(x: pp, y:  -65)
+//                        .resizable()
+//                        .frame(width: 50, height: 50)
+//                    Text("Unavailable")
+//                        .foregroundColor(Color.red)
+//                        .offset( x:-150, y: -105)
                     Slider(value: $barv, in: 0...10*Double.pi)
                         .zIndex(100)
                         .offset(y: -78 )
-                        .onChange(of: barv) { newValue in
-                            if newValue - loops * 2 * Double.pi > 2 * Double.pi{
-                                loops += 1
-                            }
-                            if newValue - loops * 2 * Double.pi < -2 * Double.pi{
-                                loops -= 1
-                            }
-                            rotation = newValue - loops * Double.pi * 2
-                           }
+//                        .onChange(of: barv) { newValue in
+//                            if newValue - loops * 2 * Double.pi > 2 * Double.pi{
+//                                loops += 1
+//                            }
+//                            if newValue - loops * 2 * Double.pi < -2 * Double.pi{
+//                                loops -= 1
+//                            }
+//                            rotation = newValue - loops * Double.pi * 2
+//                           }
                     Button(action: {
                         print("Submitted")
 
