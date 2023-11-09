@@ -1,0 +1,29 @@
+[
+    {
+        "invite_id": 1,
+        "host_name": "Josh",
+        "event_name": "frat party",
+        "group_id": 1,
+        "avail_time": "10/24/2023 13:30~10/25/2023 00:09",
+        "image_name": "josh"
+    },
+    {
+        "invite_id": 2,
+        "host_name": "Farrah",
+        "event_name": "socialsync",
+        "group_id": 2,
+        "avail_time": "10/24/2023 13:30~10/25/2023 00:00",
+        "image_name": "farrah"
+    },
+    {
+        "invite_id": 3,
+        "host_name": "Michaela",
+        "event_name": "urmom",
+        "group_id": 1,
+        "avail_time": "10/24/2023 13:30~10/25/2023 23:59",
+        "image_name": "michaela"
+    }
+]
+
+
+
