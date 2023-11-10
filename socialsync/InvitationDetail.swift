@@ -53,6 +53,7 @@ struct InvitationDetail: View {
                 Spacer()
                     .padding()
                 Button(action: {
+                    possible_time = invitation.times
                     //let _:[String] = apipost(endpoint: "/test/1/", parameters: [:])
                     accepting.toggle()
                     // jump to a different page

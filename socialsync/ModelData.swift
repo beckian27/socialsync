@@ -9,7 +9,6 @@
 //https://github.com/wert1991216/HJCycleView.git
 
 import Foundation
-
 var invitations: [Invitation] = load("josh.json")//[]
 var events: [MyEvent] = load("Allen.json")
 var friends: [MyFriend] = [MyFriend(fullname:"Alice"), MyFriend(fullname:"Bob"), MyFriend(fullname:"Charlie")]//temp test

@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     @State var invites = invitations
-    @State var num_pending = 3
-    @State var confirm_required = true
-    @State var pending_friends = 99
+    @State var num_pending = invitations.count
+    @State var confirm_required = false
+    @State var pending_friends = 0
     @State var eventz = events
     @State var friendlist = friends
     

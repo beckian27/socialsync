@@ -16,6 +16,9 @@ struct InvitationList: View {
                 Invitation in
                 NavigationLink {
                     InvitationDetail(invitation: Invitation)
+                        .task{
+                            possible_time = Invitation.times
+                        }
                 } label:  {
                     InvitationRow(invitation: Invitation)
                 }
