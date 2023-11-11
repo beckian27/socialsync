@@ -8,6 +8,6 @@
 import Foundation
 
 struct ConfigStruct: Codable, Hashable {
-    let logged_in: Bool
-    let username: String
+    var logged_in: Bool
+    var username: String
 }

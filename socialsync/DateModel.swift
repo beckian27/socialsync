@@ -42,7 +42,7 @@ func decode_invite_string(timestring: String) -> [DateInterval] {
 func encode_response(avail_times: [DateInterval]) -> String {
     var timestring = ""
     let formatter = DateFormatter()
-    formatter.dateFormat = "MM-dd-yyyy HH:mm"
+    formatter.dateFormat = "MM/dd/yyyy HH:mm"
     for time in avail_times {
         if !timestring.isEmpty {
             timestring += "|"

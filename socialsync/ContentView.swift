@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var pending_friends = 0
     @State var eventz = events
     @State var friendlist = friends
+    @State var fijsd = !Config.logged_in
     
     var badgeValue: String? {
             if confirm_required {
@@ -35,6 +36,9 @@ struct ContentView: View {
                             }catch {
                                 print("aghh")
                             }
+                        }
+                        .navigationDestination(isPresented: $fijsd) {
+                            LoginView()
                         }
                 }
                 .badge(num_pending)
@@ -63,7 +67,7 @@ struct ContentView: View {
                         
                         .task{
                             do {
-                                friendlist = Array(Set(try await performAPICall(endpoint: "/friends/")))
+                                friendlist = try await performAPICall(endpoint: "/friends/")
                             }catch {
                                 print("aghh")
                             }
@@ -74,6 +78,10 @@ struct ContentView: View {
                 .tabItem{
                     Label("Friends", systemImage: "person.crop.circle.fill")
                 }
+            }
+            .task {
+                fijsd = !Config.logged_in
+                print("hi", fijsd)
             }
         }
     }

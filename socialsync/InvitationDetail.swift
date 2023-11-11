@@ -44,7 +44,7 @@ struct InvitationDetail: View {
                 
                 Divider()
                     .navigationDestination(isPresented: $accepting){
-                        Gear()
+                        Gear(invite_id: invitation.invite_id)
                     }
                 
                 
@@ -68,7 +68,7 @@ struct InvitationDetail: View {
                         .padding(.horizontal, 20)
                 }
                 
-            }
+            }.padding()
             Spacer()
             Spacer()
             Button(action: {

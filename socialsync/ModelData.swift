@@ -17,6 +17,10 @@ var friends: [MyFriend] = [MyFriend(fullname:"Alice"), MyFriend(fullname:"Bob"),
 var Config: ConfigStruct = load("config.json")
 var servername = "http://ec2-13-58-26-236.us-east-2.compute.amazonaws.com/api/v1/"
 
+struct idstruct: Codable {
+    let event_id: Int
+}
+
 struct Wrapper<T: Codable>: Codable {
     let items: [T]
 }
@@ -91,6 +95,7 @@ func apipost<T: Codable>(endpoint: String, parameters: [String: String]) -> [T] 
             // Handle HTTP request error
         } else if let data = data {
             do {
+                print(data)
                 let wrapper = try JSONDecoder().decode(Wrapper<T>.self, from: data)
                 result = wrapper.items
             }
@@ -102,7 +107,6 @@ func apipost<T: Codable>(endpoint: String, parameters: [String: String]) -> [T] 
         }
     }
     task.resume()
-    
     return result
     
 }

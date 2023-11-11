@@ -371,10 +371,11 @@ def comments_commentid():
     group_id = flask.request.args.get('group_id')
     image_name = flask.request.args.get('image_name')
     duration = flask.request.args.get('duration')
+    username = flask.request.args.get('username')
 
     connection = model.get_db()
     cur = connection.execute(
-        "SELECT FROM memberships "
+        "SELECT username FROM memberships "
         "WHERE group_id = ?",
         (group_id,)
     )
@@ -385,6 +386,19 @@ def comments_commentid():
         "INSERT INTO invites(event_name, avail_time, host_name, group_id, group_size, image_name, duration) "
         "VALUES(?, ?, ?, ?, ?, ?, ?)",
         (event_name, avail_time, host_name, group_id, group_size, image_name, duration)
+    )
+    
+    
+
+    cur = connection.execute(
+        "SELECT last_insert_rowid()"
+    )
+    invite_id = cur.fetchone()['last_insert_rowid()']
+    
+    connection.execute(
+        "INSERT INTO responses(invite_id, username, times) "
+        "VALUES (?, ?, ?)",
+        (invite_id, username, avail_time)
     )
     
 @insta485.app.route('/api/v1/create_group/', methods=['POST'])
@@ -401,10 +415,10 @@ def create_group():
     )
     
     cur = connection.execute(
-        "SELECT last_insert_rowid"
+        "SELECT last_insert_rowid()"
     )
     
-    group_id = cur.fetchone()['last_insert_rowid']['group_id']
+    group_id = cur.fetchone()['last_insert_rowid()']
     
     for member in members:
         connection.execute(
