@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var eventz = events
     @State var friendlist = friends
     @State var fijsd = !Config.logged_in
+
     
     var badgeValue: String? {
             if confirm_required {
@@ -63,6 +64,7 @@ struct ContentView: View {
                 }
                 
                 NavigationStack {
+                   // DatePicker()
                     FriendList(friend: friendlist)
                         
                         .task{

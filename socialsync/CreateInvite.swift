@@ -49,7 +49,7 @@ struct CreateInvite: View {
     @State var displaytimes: [String] = []
     @State var starttime: String = "21:00"
     @State var endtime: String = "23:00"
-    @State var date: String = "10/27/2023"
+    @State var date: Date = Date.now
     @State var event_name: String = ""
     @State var duration: String = ""
     @Environment(\.presentationMode) var presentationMode
@@ -73,15 +73,15 @@ struct CreateInvite: View {
                     TextField("Event Name", text: $event_name)
                     TextField("Length (Hrs)", text: $duration)
                     Text("Propose timeslots:")
-                    TextField("Date mm/dd/yyyy", text: $date)
+                    DatePicker("Event Date", selection: $date)
                     TextField("Start", text: $starttime)
                     TextField("End", text: $endtime)
 
-                    Button("Add Another Timeslot") {
-                        times.append(date + " " + starttime + "~" + date + " " + endtime)
-                        displaytimes.append(date + ", " + starttime + " - " + endtime)
+//                    Button("Add Another Timeslot") {
+//                        times.append(date + " " + starttime + "~" + date + " " + endtime)
+//                        displaytimes.append(date + ", " + starttime + " - " + endtime)
 
-                    }
+                  //  }
                     Button("Send!") {
                         let temp = date + " " + starttime + "~" + date + " " + endtime
                         if times.isEmpty || times[times.count - 1] != temp {
