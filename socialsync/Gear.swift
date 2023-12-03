@@ -7,6 +7,22 @@
 
 import SwiftUI
 import UIKit
+struct Arrow: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+
+        path.move(to: CGPoint(x: 0, y: rect.height * 0.3))
+        path.addLine(to: CGPoint(x: 0, y: rect.height * 0.7))
+        path.addLine(to: CGPoint(x: rect.width * 0.6, y: rect.height * 0.6))
+        path.addLine(to: CGPoint(x: rect.width * 0.6, y: rect.height * 0.8))
+        path.addLine(to: CGPoint(x: rect.width, y: rect.height / 2))
+        path.addLine(to: CGPoint(x: rect.width * 0.6, y: rect.height * 0.2 ))
+        path.addLine(to: CGPoint(x: rect.width * 0.6, y: rect.height * 0.4 ))
+        
+        return path
+    }
+}
+
 func change_back(list: [RectangleView], num: Int) -> [RectangleView]{
     if num < 0 || num > list.count - 1{
         return list
@@ -97,12 +113,23 @@ struct Gear: View {
     var rect1 = CGRect(x: 20, y: 20, width: 100, height: 100)
     
     var body: some View {
+        Arrow()
+            .frame(width: 60, height: 60)
+            .rotationEffect(Angle(degrees:45))
+            .foregroundColor(Color.green)
+            .offset(x:100,y:100)
+        
+        Arrow()
+            .frame(width: 60, height: 60)
+            .rotationEffect(Angle(degrees:135))
+            .foregroundColor(Color.red)
+            .offset(x:-100,y:30)
         gears
             .resizable()
             .frame(width: 250, height: 250)
             .rotationEffect(Angle(radians: rotation))
 
-            .offset(y:-10)
+            .offset(y:-30)
             .gesture(
                 DragGesture()
                     
@@ -199,12 +226,14 @@ struct Gear: View {
                     .offset(x: rectangles[rectangles.count-1].offset + rectangles[rectangles.count-1].width/2, y: -110)
                     .font(.system(size: 12))
             pointer
+//                .foregroundColor(Color.blue)
                 .resizable()
                             .scaledToFit() // Maintain the aspect ratio of the image
                             .scaleEffect(0.07) // Adjust the scaling factor as needed
                             
                             .offset(x: pp, y:  -165)
-
+            Text("Red: Unavailable, Green: Available\nTap the bar to change color")
+                .offset(y:-35)
             Button(action: {
                 print("Submitted")
                 var is_green = false
@@ -261,6 +290,8 @@ struct RectangleView {
     var width: Double
     var offset: Double
 }
+
+//let light_blue = Color(red: 0.6784, green: 0.847, blue: 0.902)
 #Preview {
     Gear(invite_id: 1)
 }
