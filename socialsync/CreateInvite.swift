@@ -83,7 +83,8 @@ struct CreateInvite: View {
 
                   //  }
                     Button("Send!") {
-                        let temp = date + " " + starttime + "~" + date + " " + endtime
+                        let temp = ""
+//                        let temp = date /*+ " " + starttime + "~" + date + " " + endtime*/
                         if times.isEmpty || times[times.count - 1] != temp {
                             times.append(temp)
                         }
