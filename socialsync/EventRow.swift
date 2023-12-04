@@ -20,9 +20,13 @@ struct EventRow: View {
                 Text(event.event_name + " - " + event.host_name)
                 Text(event.times.start.formatted())
             }
+            .font(.custom("Verdana", size: 25))//.textCase(.uppercase)
             
             Spacer()
         }
+        .foregroundColor(Color.white)
+        .background(Color.bar)
+        .cornerRadius(15)
         
     }
 }

@@ -16,28 +16,28 @@ struct InvitationDetail: View {
         
         NavigationStack {
             
-            CircleImage(image: invitation.image)
-                .offset(y: 0)
-                .padding(.bottom, -5)
+            
             
             VStack (alignment: .leading) {
+                CircleImage(image: invitation.image)
+                    .offset(y: 0)
+                    .padding(.bottom, -5)
                 Text("You're invited to " + invitation.event_name)
                     .font(.title)
-                
+                Spacer()
                 HStack {
-                    Text("Potential timeslots:")
-                        .font(.subheadline)
+                    Text("   Potential timeslots:")
+                        .font(.headline)
                     Spacer()
-                    Text("goodbye")
-                        .font(.subheadline)
+                    
                 }
                 .foregroundColor(.secondary)
                 ForEach(invitation.times, id: \.self) { time in
-                    Text(time.start.formatted() + "-" + time.end.formatted(date:.omitted, time:.shortened))
+                    Text("   " + time.start.formatted() + "-" + time.end.formatted(date:.omitted, time:.shortened))
                 }
-                Text("Invited:")
+                Text("   Invited:")
                 ForEach(info[0].members, id:\.self) { member in
-                    Text(member)
+                    Text("   " + member)
                 }
                 
                 
@@ -68,35 +68,37 @@ struct InvitationDetail: View {
                         .padding(.horizontal, 20)
                 }
                 
-            }.padding()
-            Spacer()
-            Spacer()
-            Button(action: {
-                print("Maybe Next time")
-                let _:[String] = apipost(endpoint: "test2/", parameters: [:])
-                dismiss()
-                // exit current scope and delete the invitation.
-            }) {
-                Text("Reject")
-                    .font(.system(size: 14))
-                    .frame(minWidth: 10, maxWidth: .infinity)
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color(red: 224 / 255, green: 0 / 255, blue: 0 / 255))
-                    .cornerRadius(5)
-                    .padding(.horizontal, 20)
-            }
-            .padding()
-            .task {
-                do {
-                    info = try await performAPICall(endpoint: "/groups/")
+                
+                Spacer()
+                Spacer()
+                Button(action: {
+                    print("Maybe Next time")
+                    let _:[String] = apipost(endpoint: "test2/", parameters: [:])
+                    dismiss()
+                    // exit current scope and delete the invitation.
+                }) {
+                    Text("Reject")
+                        .font(.system(size: 14))
+                        .frame(minWidth: 10, maxWidth: .infinity)
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color(red: 224 / 255, green: 0 / 255, blue: 0 / 255))
+                        .cornerRadius(5)
+                        .padding(.horizontal, 20)
                 }
-                catch {}
+                
+                .padding()
+                .task {
+                    do {
+                        info = try await performAPICall(endpoint: "/groups/")
+                    }
+                    catch {}
+                }
             }
+            .background(Color.back)
             
-            .navigationTitle(invitation.host_name)
-            .navigationBarTitleDisplayMode(.inline)
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 #Preview {

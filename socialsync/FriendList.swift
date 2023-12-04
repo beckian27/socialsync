@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyFriend: Codable, Hashable {
     let fullname: String
+    let filename: String
 }
 
 
@@ -17,11 +18,23 @@ struct FriendList: View {
     @State private var showingAddFriend = false
     var body: some View {
         NavigationStack {
-            List(friend, id: \.fullname) { friend in
-                NavigationLink(destination: Text("Detail view for \(friend.fullname)")) {
-                    Text(friend.fullname)
+            VStack {
+                ForEach(friend, id: \.fullname) { friend in
+                    NavigationLink(destination: Text("Detail view for \(friend.fullname)")) {
+                        HStack {
+                            Image(friend.filename).resizable()
+                                .frame(width: 50, height: 50)
+                            Text(friend.fullname).font(.custom("Verdana", size: 25))//.textCase(.uppercase)
+                            Spacer()
+                            
+                        }
+                        .foregroundColor(Color.white)
+                        .background(Color.bar)
+                        .cornerRadius(15)
+                    }
                 }
             }
+            Spacer()
             .navigationBarTitle("Friend List")
             .navigationBarItems(trailing:
                 Button(action: {
@@ -33,7 +46,10 @@ struct FriendList: View {
             .sheet(isPresented: $showingAddFriend) {
                         AddFriend(isPresented: $showingAddFriend)
             }
+            .background(Color.back)
+            
         }
+        
         
     }
 }

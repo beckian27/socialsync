@@ -13,25 +13,32 @@ struct EventList: View {
     var body: some View {
         
         NavigationStack {
-            List(events, id: \.event_id) {
-                Event in
-                NavigationLink {
-                    EventDetail(event: Event)
-                } label:  {
-                    EventRow(event: Event)
+            VStack {
+                ForEach(events, id: \.event_id) {
+                    Event in
+                    NavigationLink {
+                        EventDetail(event: Event)
+                    } label:  {
+                        EventRow(event: Event)
+                    }
+                    .foregroundColor(.white)
+                    .padding(10)
                 }
+                Spacer()
+                .navigationTitle("Future Events")
+                .navigationBarItems(trailing:
+                    Button(action: {
+                        ye.toggle()
+                    }) {
+                        Image(systemName: "plus.circle")
+                    }
+                )
+                .navigationDestination(isPresented: $ye) {
+                    GroupList()
             }
-            .navigationTitle("Future Events")
-            .navigationBarItems(trailing:
-                Button(action: {
-                    ye.toggle()
-                }) {
-                    Image(systemName: "plus.circle")
-                }
-            )
-            .navigationDestination(isPresented: $ye) {
-                GroupList()
+
             }
+            .background(Color.back)
         }
     }
 }

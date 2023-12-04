@@ -45,6 +45,15 @@ def get_myEvents(username):
     
     return events
 
+@insta485.app.route('/api/v1/get_id')
+def get_id():
+    connection = model.get_db()
+    cur = connection.execute(
+        "SELECT group_id "
+        "FROM memberships "
+        "WHERE username = ?",
+        (username,)
+    )
 
 @insta485.app.route('/api/v1/invitations/<username>/')
 def get_invites(username):
@@ -175,7 +184,7 @@ def get_friends(username):
     results = cur.fetchall()
     friends = {'items': []}
     for friend in results:
-        friends['items'].append({'fullname': friend['friend2']})
+        friends['items'].append({'fullname': friend['friend2'], 'filename':friend['friend2']})
         
     connection = model.get_db()
     cur = connection.execute(
@@ -186,7 +195,7 @@ def get_friends(username):
     
     results = cur.fetchall()
     for friend in results:
-        friends['items'].append({'fullname': friend['friend1']})
+        friends['items'].append({'fullname': friend['friend1'], 'filename':friend['friend1']})
         
     return friends
 
@@ -391,7 +400,7 @@ def comments_commentid():
     
 
     cur = connection.execute(
-        "SELECT last_insert_rowid()"
+        "SELECT ft_rowid()"
     )
     invite_id = cur.fetchone()['last_insert_rowid()']
     

@@ -5,13 +5,10 @@
 //  Created by Ian Beck on 9/23/23.
 //
 
-//https://github.com/WangLiquan/EWCircleView.git
-//https://github.com/wert1991216/HJCycleView.git
-
 import Foundation
 var invitations: [Invitation] = load("josh.json")//[]
 var events: [MyEvent] = load("Allen.json")
-var friends: [MyFriend] = [MyFriend(fullname:"Alice"), MyFriend(fullname:"Bob"), MyFriend(fullname:"Charlie")]//temp test
+var friends: [MyFriend] = [MyFriend(fullname:"Alice", filename:"josh"), MyFriend(fullname:"Bob", filename:"josh"), MyFriend(fullname:"Charlie", filename:"josh")]//temp test
 //var servername = "http://172.20.10.5:8000/api/v1/"
 //var servername = "http://192.168.1.135:8000/api/v1/"
 var Config: ConfigStruct = load("config.json")

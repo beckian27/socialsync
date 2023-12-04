@@ -45,69 +45,82 @@ struct GroupList: View {
 
 struct CreateInvite: View {
     var grp: group
-    @State var times: [String] = []
-    @State var displaytimes: [String] = []
-    @State var starttime: String = "21:00"
-    @State var endtime: String = "23:00"
+    @State var displaytimes: [DateInterval] = []
     @State var date: Date = Date.now
+    @State var endtime: Date = Date(timeIntervalSinceNow: 999999999999999)
     @State var event_name: String = ""
     @State var duration: String = ""
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
+        
         NavigationStack {
             
+            
             VStack (alignment: .leading) {
-                Text("Creating an event for")
+                
+                Text("Create Event")
                     .font(.title)
-                Text(grp.group_name + ":")
-                ForEach(grp.members, id:\.self) { member in
-                    Text(member)
-                }
+                    .bold()
+                Text("For: " + grp.group_name).bold()
+//                ForEach(grp.members, id:\.self) { member in
+//                    Text(member)
+//                }
                 Divider()
                 Text("Potential Times:")
-                ForEach(displaytimes, id:\.self) { time in
-                    Text(time)
+                
+                ForEach(displaytimes, id: \.self) { time in
+                    Text(time.start.formatted() + "-" + time.end.formatted(date:.omitted, time:.shortened))
                 }
-                Form {
+                Form{
+                    
                     TextField("Event Name", text: $event_name)
                     TextField("Length (Hrs)", text: $duration)
                     Text("Propose timeslots:")
-                    DatePicker("Event Date", selection: $date)
-                    TextField("Start", text: $starttime)
-                    TextField("End", text: $endtime)
+                    DatePicker("Date", selection: $date, displayedComponents: [.date])
+                    DatePicker("Start", selection: $date, displayedComponents: [.hourAndMinute])
+                        .onAppear {
+                            UIDatePicker.appearance().minuteInterval = 30
+                        }
+                    DatePicker("End", selection: $endtime, displayedComponents: [.hourAndMinute])
+                        .onAppear {
+                            UIDatePicker.appearance().minuteInterval = 30
+                        }
+                    Button("Add Another Timeslot") {
+                        let interval = DateInterval(start: date, end: endtime)
+                        displaytimes.append(interval)
 
-//                    Button("Add Another Timeslot") {
-//                        times.append(date + " " + starttime + "~" + date + " " + endtime)
-//                        displaytimes.append(date + ", " + starttime + " - " + endtime)
-
-                  //  }
+                    }
                     Button("Send!") {
-                        let temp = ""
-//                        let temp = date /*+ " " + starttime + "~" + date + " " + endtime*/
-                        if times.isEmpty || times[times.count - 1] != temp {
-                            times.append(temp)
+                        let interval = DateInterval(start: date, end: endtime)
+                        displaytimes.append(interval)
+                        let times = Array(Set(displaytimes))
+                        
+                        let timestring = encode_response(avail_times: times)
+                        Task{
+                            
+                            let _:[String] = apipost(endpoint: "create_invite", parameters: ["event_name": event_name, "avail_time": timestring, "host_name": Config.username, "group_id": String(grp.group_id), "image_name": "josh", "duration": String(Int(duration)! * 3600), "username": Config.username])
+                            //                        do {
+                            //                            let id:[idstruct] = try await performAPICall(endpoint: "get_id/")
+                            //                            print(id)
+                            //                        }
+                            //                        catch{}
                         }
-                        var timestring: String = ""
-                        for time in times {
-                            timestring += time + "|"
-                        }
-                        timestring.removeLast()
-                                    
-                        let _:[String] = apipost(endpoint: "create_invite", parameters: ["event_name": event_name, "avail_time": timestring, "host_name": Config.username, "group_id": String(grp.group_id), "image_name": "josh", "duration": String(Int(duration)! * 3600), "username": Config.username])
-//                        do {
-//                            let id:[idstruct] = try await performAPICall(endpoint: "get_id/")
-//                            print(id)
-//                        }
-//                        catch{}
                         presentationMode.wrappedValue.dismiss()
                     }
                 }
-                .padding()
+                .cornerRadius(15)
+                
+                .background(Color.clear)
             }
+            .background(Color.back)
+        
+            
         }
+        
         .padding()
         .navigationBarTitleDisplayMode(.inline)
+        .background(Color.back)
     }
 }
 
@@ -126,7 +139,6 @@ struct CustomButton: View {
         else {
             newgroupmembers.append(name)
         }
-        
         self.didTap.toggle()
         
     }

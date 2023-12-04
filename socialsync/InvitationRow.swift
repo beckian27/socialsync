@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
-
+extension Color {
+    static let bar = Color(red: 80/255, green: 108/255, blue: 250/255)
+}
 struct InvitationRow: View {
     var invitation: Invitation
     
@@ -15,11 +17,13 @@ struct InvitationRow: View {
             invitation.image
                 .resizable()
                 .frame(width: 50, height: 50)
-            Text(invitation.event_name + " - " + invitation.host_name)
+            Text(invitation.event_name + " - " + invitation.host_name).font(.custom("Verdana", size: 25))//.textCase(.uppercase)
             
             Spacer()
         }
-        
+        .foregroundColor(Color.white)
+        .background(Color.bar)
+        .cornerRadius(15)
     }
 }
 

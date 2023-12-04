@@ -42,10 +42,15 @@ struct ContentView: View {
                             LoginView()
                         }
                 }
+                .toolbar(.visible, for: .tabBar)
+                .toolbarBackground(Color.white, for: .tabBar)
+                
                 .badge(num_pending)
                 .tabItem{
                     Label("Invitations", systemImage: "envelope.circle.fill")
                 }
+                 
+                
                 NavigationStack {
                     EventList(events: eventz)
                         
@@ -81,6 +86,8 @@ struct ContentView: View {
                     Label("Friends", systemImage: "person.crop.circle.fill")
                 }
             }
+            
+            
             .task {
                 fijsd = !Config.logged_in
                 print("hi", fijsd)
